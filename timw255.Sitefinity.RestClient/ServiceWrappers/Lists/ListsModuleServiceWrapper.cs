@@ -19,7 +19,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Lists
         //[WebGet(UriTemplate = "FullSummary/?listItemId={listItemId}")]
         public string GetFullSummary(Guid listItemId)
         {
-            var request = new RestRequest(this.ServiceUrl + "FullSummary/?listItemId={listItemId}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("FullSummary/?listItemId={listItemId}"), Method.GET);
 
             request.AddUrlSegment("listItemId", listItemId.ToString());
 
@@ -29,7 +29,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Lists
         //[WebInvoke(Method = "POST", UriTemplate = "Set/SortOrder/{listId}/{sortOrder}/", ResponseFormat = WebMessageFormat.Xml)]
         public void SetListSortOrder(Guid listId, string sortOrder)
         {
-            var request = new RestRequest(this.ServiceUrl + "Set/SortOrder/{listId}/{sortOrder}/", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("Set/SortOrder/{listId}/{sortOrder}/"), Method.POST);
 
             request.AddUrlSegment("listId", listId.ToString());
             request.AddUrlSegment("sortOrder", sortOrder);

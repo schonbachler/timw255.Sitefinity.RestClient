@@ -20,7 +20,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebGet(UriTemplate = "/clicks/{issueId}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}")]
         public CollectionContext<SubscriberIssueClickViewModel> GetIssueClicks(Guid issueId, string provider, string sortExpression, int skip, int take, string filter)
         {
-            var request = new RestRequest(this.ServiceUrl + "/clicks/{issueId}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/clicks/{issueId}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}"), Method.GET);
 
             request.AddUrlSegment("issueId", issueId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -35,7 +35,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebGet(UriTemplate = "/clicksbyhour/{issueId}/?provider={provider}")]
         public IEnumerable<KeyValuePair<string, int>> GetIssueClicksByHour(Guid issueId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/clicksbyhour/{issueId}/?provider={provider}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/clicksbyhour/{issueId}/?provider={provider}"), Method.GET);
 
             request.AddUrlSegment("issueId", issueId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -47,7 +47,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebGet(UriTemplate = "/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}")]
         public IEnumerable<IssueReportViewModel> GetIssueReports(string provider, string sortExpression, int skip, int take, string filter)
         {
-            var request = new RestRequest(this.ServiceUrl + "/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}"), Method.GET);
 
             request.AddUrlSegment("provider", provider);
             request.AddUrlSegment("sortExpression", sortExpression);
@@ -61,7 +61,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebGet(UriTemplate = "/subscriberclicks/{issueId}/?subscriberId={subscriberId}&provider={provider}")]
         public IEnumerable<SubscriberIssueClickViewModel> GetIssueSubscriberClicks(Guid issueId, Guid subscriberId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/subscriberclicks/{issueId}/?subscriberId={subscriberId}&provider={provider}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/subscriberclicks/{issueId}/?subscriberId={subscriberId}&provider={provider}"), Method.GET);
 
             request.AddUrlSegment("issueId", issueId.ToString());
             request.AddUrlSegment("subscriberId", subscriberId.ToString());
@@ -73,7 +73,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebGet(UriTemplate = "/subscribers/{issueId}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&byClickedLink={byClickedLink}")]
         public CollectionContext<IssueSubscriberViewModel> GetIssueSubscribers(Guid issueId, string provider, string sortExpression, int skip, int take, string filter, string byClickedLink)
         {
-            var request = new RestRequest(this.ServiceUrl + "/subscribers/{issueId}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&byClickedLink={byClickedLink}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/subscribers/{issueId}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&byClickedLink={byClickedLink}"), Method.GET);
 
             request.AddUrlSegment("issueId", issueId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -89,7 +89,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebGet(UriTemplate = "/totallinkclicks/{issueId}/?search={search}&provider={provider}")]
         public IEnumerable<KeyValuePair<string, int>> GetIssueTotalLinkClicks(Guid issueId, string search, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/totallinkclicks/{issueId}/?search={search}&provider={provider}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/totallinkclicks/{issueId}/?search={search}&provider={provider}"), Method.GET);
 
             request.AddUrlSegment("issueId", issueId.ToString());
             request.AddUrlSegment("search", search);
@@ -101,7 +101,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebGet(UriTemplate = "/uniqueclicks/{issueId}/?provider={provider}")]
         public IEnumerable<ClickStatViewModel> GetIssueUniqueClicks(Guid issueId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/uniqueclicks/{issueId}/?provider={provider}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/uniqueclicks/{issueId}/?provider={provider}"), Method.GET);
 
             request.AddUrlSegment("issueId", issueId.ToString());
             request.AddUrlSegment("provider", provider);

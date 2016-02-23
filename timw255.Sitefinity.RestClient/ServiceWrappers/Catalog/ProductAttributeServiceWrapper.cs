@@ -21,7 +21,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Catalog
         //[WebInvoke(Method = "POST", UriTemplate = "/batch/?provider={provider}&language={deletedLanguage}")]
         public bool BatchDeleteProductAttributes(Guid[] attributeIds, string provider, string deletedLanguage)
         {
-            var request = new RestRequest(this.ServiceUrl + "/batch/?provider={provider}&language={deletedLanguage}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/batch/?provider={provider}&language={deletedLanguage}"), Method.POST);
 
             request.AddUrlSegment("provider", provider);
             request.AddUrlSegment("deletedLanguage", deletedLanguage);
@@ -34,7 +34,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Catalog
         //[WebInvoke(Method = "PUT", UriTemplate = "/batch/place/?providerName={providerName}&placePosition={placePosition}&destination={destination}")]
         public CollectionContext<ProductAttribute> BatchPlaceAttributes(Guid[] sourceAttributeValueIds, string providerName, string placePosition, string destination)
         {
-            var request = new RestRequest(this.ServiceUrl + "/batch/place/?providerName={providerName}&placePosition={placePosition}&destination={destination}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/batch/place/?providerName={providerName}&placePosition={placePosition}&destination={destination}"), Method.PUT);
 
             request.AddUrlSegment("providerName", providerName);
             request.AddUrlSegment("placePosition", placePosition);
@@ -48,7 +48,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Catalog
         //[WebInvoke(Method = "DELETE", UriTemplate = "/{attributeId}/?provider={provider}&language={deletedLanguage}")]
         public bool DeleteProductAttribute(Guid attributeId, string provider, string deletedLanguage)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{attributeId}/?provider={provider}&language={deletedLanguage}", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("/{attributeId}/?provider={provider}&language={deletedLanguage}"), Method.DELETE);
 
             request.AddUrlSegment("attributeId", attributeId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -60,7 +60,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Catalog
         //[WebGet(UriTemplate = "/AllowedAttributes/{productId}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}")]
         public CollectionContext<ProductAttribute> GetAllowedProductAttributes(Guid productId, string provider, string sortExpression, int skip, int take, string filter)
         {
-            var request = new RestRequest(this.ServiceUrl + "/AllowedAttributes/{productId}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/AllowedAttributes/{productId}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}"), Method.GET);
 
             request.AddUrlSegment("productId", productId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -75,7 +75,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Catalog
         //[WebGet(UriTemplate = "/predecessor/{valueId}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}")]
         public CollectionContext<ProductAttribute> GetPredecessorItems(Guid valueId, string provider, string sortExpression, int skip, int take, string filter)
         {
-            var request = new RestRequest(this.ServiceUrl + "/predecessor/{valueId}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/predecessor/{valueId}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}"), Method.GET);
 
             request.AddUrlSegment("valueId", valueId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -90,7 +90,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Catalog
         //[WebGet(UriTemplate = "/{attributeId}/?provider={provider}")]
         public ItemContext<ProductAttribute> GetProductAttribute(Guid attributeId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{attributeId}/?provider={provider}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/{attributeId}/?provider={provider}"), Method.GET);
 
             request.AddUrlSegment("attributeId", attributeId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -101,7 +101,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Catalog
         //[WebGet(UriTemplate = "/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}")]
         public CollectionContext<ProductAttribute> GetProductAttributes(string provider, string sortExpression, int skip, int take, string filter)
         {
-            var request = new RestRequest(this.ServiceUrl + "/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}"), Method.GET);
 
             request.AddUrlSegment("provider", provider);
             request.AddUrlSegment("sortExpression", sortExpression);
@@ -115,7 +115,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Catalog
         //[WebInvoke(Method = "POST", UriTemplate = "/makeactive/?provider={provider}")]
         public bool MakeActive(Guid attributeId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/makeactive/?provider={provider}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/makeactive/?provider={provider}"), Method.POST);
 
             request.AddUrlSegment("provider", provider);
 
@@ -127,7 +127,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Catalog
         //[WebInvoke(Method = "POST", UriTemplate = "/makeinactive/?provider={provider}")]
         public bool MakeInActive(Guid attributeId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/makeinactive/?provider={provider}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/makeinactive/?provider={provider}"), Method.POST);
 
             request.AddUrlSegment("provider", provider);
 
@@ -139,7 +139,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Catalog
         //[WebInvoke(Method = "PUT", UriTemplate = "/{attributeId}/?provider={provider}")]
         public ItemContext<ProductAttribute> SaveProductAttribute(Guid attributeId, ItemContext<ProductAttribute> attribute, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{attributeId}/?provider={provider}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/{attributeId}/?provider={provider}"), Method.PUT);
 
             request.AddUrlSegment("attributeId", attributeId.ToString());
             request.AddUrlSegment("provider", provider);

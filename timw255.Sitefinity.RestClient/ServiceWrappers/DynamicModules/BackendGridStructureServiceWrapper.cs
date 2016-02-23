@@ -20,7 +20,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebInvoke(Method = "GET", UriTemplate = "/?parentTypeId={parentTypeId}")]
         public CollectionContext<GridColumnWrapper> GetBackendGrid(Guid parentTypeId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/?parentTypeId={parentTypeId}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/?parentTypeId={parentTypeId}"), Method.GET);
 
             request.AddUrlSegment("parentTypeId", parentTypeId.ToString());
 
@@ -30,7 +30,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebInvoke(Method = "PUT", UriTemplate = "/?parentTypeId={parentTypeId}")]
         public void ModifyBackendGrid(GridColumnWrapper[] gridColumns, Guid parentTypeId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/?parentTypeId={parentTypeId}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/?parentTypeId={parentTypeId}"), Method.PUT);
 
             request.AddUrlSegment("parentTypeId", parentTypeId.ToString());
 

@@ -20,7 +20,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Configuration
         //[WebInvoke(Method="PUT", UriTemplate="{policyHandlerName}/{policyName}/?provider={provider}", ResponseFormat=WebMessageFormat.Json)]
         public bool CreatePolicy(string policyHandlerName, string policyName, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "{policyHandlerName}/{policyName}/?provider={provider}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("{policyHandlerName}/{policyName}/?provider={provider}"), Method.PUT);
 
             request.AddUrlSegment("policyHandlerName", policyHandlerName);
             request.AddUrlSegment("policyName", policyName);
@@ -32,7 +32,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Configuration
         //[WebInvoke(Method="DELETE", UriTemplate="{policyHandlerName}/{policyName}/?provider={provider}", ResponseFormat=WebMessageFormat.Json)]
         public bool DeletePolicy(string policyHandlerName, string policyName, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "{policyHandlerName}/{policyName}/?provider={provider}", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("{policyHandlerName}/{policyName}/?provider={provider}"), Method.DELETE);
 
             request.AddUrlSegment("policyHandlerName", policyHandlerName);
             request.AddUrlSegment("policyName", policyName);
@@ -44,7 +44,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Configuration
         //[WebGet(UriTemplate="{policyHandlerName=null}/?provider={provider}&sort={sort}&skip={skip}&take={take}&filter={filter}", ResponseFormat=WebMessageFormat.Json)]
         public CollectionContext<PolicyItem> GetPolicies(string policyHandlerName, string provider, string sort, int skip, int take, string filter)
         {
-            var request = new RestRequest(this.ServiceUrl + "{policyHandlerName}/?provider={provider}&sort={sort}&skip={skip}&take={take}&filter={filter}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("{policyHandlerName}/?provider={provider}&sort={sort}&skip={skip}&take={take}&filter={filter}"), Method.GET);
 
             request.AddUrlSegment("policyHandlerName", policyHandlerName);
             request.AddUrlSegment("provider", provider);

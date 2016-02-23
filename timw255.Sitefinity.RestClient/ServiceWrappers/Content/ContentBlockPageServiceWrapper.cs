@@ -19,7 +19,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Content
         //[WebGet(UriTemplate = "/pages/?cultureName={cultureName}")]
         public CollectionContext<ContentBlockPageViewModel> GetContentBlocksByPages(string cultureName)
         {
-            var request = new RestRequest(this.ServiceUrl + "/pages/?cultureName={cultureName}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/pages/?cultureName={cultureName}"), Method.GET);
 
             request.AddUrlSegment("cultureName", cultureName);
 

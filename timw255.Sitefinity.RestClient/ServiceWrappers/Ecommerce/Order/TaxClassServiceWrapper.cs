@@ -19,7 +19,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Order
         //[WebInvoke(Method = "POST", UriTemplate = "/batch/?provider={provider}&language={deletedLanguage}")]
         public bool BatchDeleteTaxClasses(Guid[] taxClassIds, string provider, string deletedLanguage)
         {
-            var request = new RestRequest(this.ServiceUrl + "/batch/?provider={provider}&language={deletedLanguage}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/batch/?provider={provider}&language={deletedLanguage}"), Method.POST);
 
             request.AddUrlSegment("provider", provider);
             request.AddUrlSegment("deletedLanguage", deletedLanguage);
@@ -32,7 +32,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Order
         //[WebInvoke(Method = "DELETE", UriTemplate = "/{taxClassId}/?provider={provider}&language={deletedLanguage}")]
         public bool DeleteTaxClass(Guid taxClassId, string provider, string deletedLanguage)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{taxClassId}/?provider={provider}&language={deletedLanguage}", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("/{taxClassId}/?provider={provider}&language={deletedLanguage}"), Method.DELETE);
 
             request.AddUrlSegment("taxClassId", taxClassId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -44,7 +44,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Order
         //[WebGet(UriTemplate = "/{taxClassId}/?provider={provider}")]
         public ItemContext<TaxClass> GetTaxClass(Guid taxClassId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{taxClassId}/?provider={provider}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/{taxClassId}/?provider={provider}"), Method.GET);
 
             request.AddUrlSegment("taxClassId", taxClassId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -55,7 +55,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Order
         //[WebInvoke(Method = "POST", UriTemplate = "/makeactive/?provider={provider}")]
         public bool MakeActive(Guid taxClassId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/makeactive/?provider={provider}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/makeactive/?provider={provider}"), Method.POST);
 
             request.AddUrlSegment("provider", provider);
 
@@ -67,7 +67,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Order
         //[WebInvoke(Method = "POST", UriTemplate = "/makeinactive/?provider={provider}")]
         public bool MakeInActive(Guid taxClassId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/makeinactive/?provider={provider}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/makeinactive/?provider={provider}"), Method.POST);
 
             request.AddUrlSegment("provider", provider);
 
@@ -79,7 +79,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Order
         //[WebInvoke(Method = "PUT", UriTemplate = "/{taxClassId}/?provider={provider}")]
         public ItemContext<TaxClass> SaveTaxClass(Guid taxClassId, ItemContext<TaxClass> taxClass, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{taxClassId}/?provider={provider}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/{taxClassId}/?provider={provider}"), Method.PUT);
 
             request.AddUrlSegment("taxClassId", taxClassId.ToString());
             request.AddUrlSegment("provider", provider);

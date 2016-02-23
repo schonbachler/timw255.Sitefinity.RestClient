@@ -20,7 +20,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Taxonomies
         //[WebInvoke(Method="POST", UriTemplate="batch/?providerName={providerName}&itemType={itemType}&language={deletedLanguage}&deleteTaxaOnly={deleteTaxaOnly}", ResponseFormat=WebMessageFormat.Json)]
         public bool BatchDeleteTaxonomy(Guid[] Ids, string itemType, string providerName, string deletedLanguage, bool deleteTaxaOnly)
         {
-            var request = new RestRequest(this.ServiceUrl + "batch/?providerName={providerName}&itemType={itemType}&language={deletedLanguage}&deleteTaxaOnly={deleteTaxaOnly}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("batch/?providerName={providerName}&itemType={itemType}&language={deletedLanguage}&deleteTaxaOnly={deleteTaxaOnly}"), Method.POST);
 
             request.AddUrlSegment("providerName", providerName);
             request.AddUrlSegment("itemType", itemType);
@@ -36,7 +36,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Taxonomies
         //8.0 - [WebInvoke(Method="DELETE", UriTemplate="{taxonomyId}/?provider={provider}&lang={lang}&deleteTaxaOnly={deleteTaxaOnly}")]
         public bool DeleteTaxonomy(Guid taxonomyId, string provider, string lang, bool deleteTaxaOnly)
         {
-            var request = new RestRequest(this.ServiceUrl + "{taxonomyId}/?provider={provider}&lang={lang}&deleteTaxaOnly={deleteTaxaOnly}", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("{taxonomyId}/?provider={provider}&lang={lang}&deleteTaxaOnly={deleteTaxaOnly}"), Method.DELETE);
 
             request.AddUrlSegment("taxonomyId", taxonomyId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -49,7 +49,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Taxonomies
         //[WebGet(UriTemplate = "/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&taxonomyType={taxonomyType}")]
         public CollectionContext<WcfTaxonomy> GetTaxonomies(string provider, string sortExpression, int skip, int take, string filter, string taxonomyType)
         {
-            var request = new RestRequest(this.ServiceUrl + "/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&taxonomyType={taxonomyType}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&taxonomyType={taxonomyType}"), Method.GET);
 
             request.AddUrlSegment("provider", provider);
             request.AddUrlSegment("sortExpression", sortExpression);
@@ -64,7 +64,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Taxonomies
         //[WebGet(UriTemplate = "{taxonomyId}/?provider={provider}")]
         public WcfTaxonomy GetTaxonomy(Guid taxonomyId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "{taxonomyId}/?provider={provider}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("{taxonomyId}/?provider={provider}"), Method.GET);
 
             request.AddUrlSegment("taxonomyId", taxonomyId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -75,7 +75,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Taxonomies
         //[WebInvoke(Method = "PUT", UriTemplate = "/{taxonomyId}/?provider={provider}")]
         public WcfTaxonomy SaveTaxonomy(WcfTaxonomy taxonomy, Guid taxonomyId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{taxonomyId}/?provider={provider}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/{taxonomyId}/?provider={provider}"), Method.PUT);
 
             request.AddUrlSegment("taxonomyId", taxonomyId.ToString());
             request.AddUrlSegment("provider", provider);

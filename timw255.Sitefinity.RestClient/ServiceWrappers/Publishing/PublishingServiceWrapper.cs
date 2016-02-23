@@ -20,7 +20,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Publishing
         //[WebInvoke(Method = "POST", UriTemplate = "batch/?providerName={providerName}")]
         public bool BatchDeletePoints(string providerName, Guid[] Ids)
         {
-            var request = new RestRequest(this.ServiceUrl + "batch/?providerName={providerName}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("batch/?providerName={providerName}"), Method.POST);
 
             request.AddUrlSegment("providerName", providerName);
 
@@ -32,7 +32,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Publishing
         //[WebInvoke(Method = "PUT", UriTemplate = "/batch/setactive/?providerName={providerName}&setActive={setActive}")]
         public bool BatchSetActive(string providerName, Guid[] ids, bool setActive)
         {
-            var request = new RestRequest(this.ServiceUrl + "/batch/setactive/?providerName={providerName}&setActive={setActive}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/batch/setactive/?providerName={providerName}&setActive={setActive}"), Method.PUT);
 
             request.AddUrlSegment("providerName", providerName);
             request.AddUrlSegment("setActive", setActive.ToString());
@@ -45,7 +45,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Publishing
         //[WebInvoke(Method = "DELETE", UriTemplate = "/{pointId}/?providerName={providerName}&createNew={createNew}&itemTemplate={itemTemplate}")]
         public bool DeletePublishingPoint(string providerName, Guid pointId, bool createNew, string itemTemplate)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{pointId}/?providerName={providerName}&createNew={createNew}&itemTemplate={itemTemplate}", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("/{pointId}/?providerName={providerName}&createNew={createNew}&itemTemplate={itemTemplate}"), Method.DELETE);
 
             request.AddUrlSegment("pointId", pointId.ToString());
             request.AddUrlSegment("providerName", providerName);
@@ -58,7 +58,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Publishing
         //[WebInvoke(Method = "GET", UriTemplate = "/indboundpipes/?providerName={providerName}&pipeTypeName={pipeTypeName}&sort={sort}&filter={filter}&skip={skip}&take={take}")]
         public CollectionContext<PublishingPipeViewModel> GetInboundPublishingPipes(string providerName, string pipeTypeName, string sort, string filter, int skip, int take)
         {
-            var request = new RestRequest(this.ServiceUrl + "/indboundpipes/?providerName={providerName}&pipeTypeName={pipeTypeName}&sort={sort}&filter={filter}&skip={skip}&take={take}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/indboundpipes/?providerName={providerName}&pipeTypeName={pipeTypeName}&sort={sort}&filter={filter}&skip={skip}&take={take}"), Method.GET);
 
             request.AddUrlSegment("providerName", providerName);
             request.AddUrlSegment("pipeTypeName", pipeTypeName);
@@ -73,7 +73,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Publishing
         //[WebInvoke(Method = "GET", UriTemplate = "/pipes/?providerName={providerName}&pipeTypeName={pipeTypeName}&sort={sort}&filter={filter}&skip={skip}&take={take}")]
         public CollectionContext<PublishingPipeViewModel> GetOutgoingPublishingPipes(string providerName, string pipeTypeName, string sort, string filter, int skip, int take)
         {
-            var request = new RestRequest(this.ServiceUrl + "/pipes/?providerName={providerName}&pipeTypeName={pipeTypeName}&sort={sort}&filter={filter}&skip={skip}&take={take}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/pipes/?providerName={providerName}&pipeTypeName={pipeTypeName}&sort={sort}&filter={filter}&skip={skip}&take={take}"), Method.GET);
 
             request.AddUrlSegment("providerName", providerName);
             request.AddUrlSegment("pipeTypeName", pipeTypeName);
@@ -88,7 +88,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Publishing
         //[WebGet(UriTemplate = "/{pointId}/?providerName={providerName}&createNew={createNew}&itemTemplate={itemTemplate}")]
         public DataItemContext<PublishingPointDetailViewModel> GetPublishingPoint(string providerName, Guid pointId, bool createNew, string itemTemplate)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{pointId}/?providerName={providerName}&createNew={createNew}&itemTemplate={itemTemplate}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/{pointId}/?providerName={providerName}&createNew={createNew}&itemTemplate={itemTemplate}"), Method.GET);
 
             request.AddUrlSegment("pointId", pointId.ToString());
             request.AddUrlSegment("providerName", providerName);
@@ -101,7 +101,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Publishing
         //[WebGet(UriTemplate = "/?providerName={providerName}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}")]
         public CollectionContext<PublishingPointViewModel> GetPublishingPoints(string providerName, string sortExpression, int skip, int take, string filter)
         {
-            var request = new RestRequest(this.ServiceUrl + "/?providerName={providerName}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/?providerName={providerName}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}"), Method.GET);
 
             request.AddUrlSegment("providerName", providerName);
             request.AddUrlSegment("sortExpression", sortExpression);
@@ -115,7 +115,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Publishing
         //[WebInvoke(Method = "PUT", UriTemplate = "/reindex/{pointId}/?providerName={providerName}")]
         public bool ReindexSearchContent(string providerName, Guid pointId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/reindex/{pointId}/?providerName={providerName}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/reindex/{pointId}/?providerName={providerName}"), Method.PUT);
 
             request.AddUrlSegment("pointId", pointId.ToString());
             request.AddUrlSegment("providerName", providerName);
@@ -126,7 +126,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Publishing
         //[WebInvoke(Method = "PUT", UriTemplate = "/runpipes/{pointId}/?providerName={providerName}")]
         public bool RunPipes(string providerName, Guid pointId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/runpipes/{pointId}/?providerName={providerName}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/runpipes/{pointId}/?providerName={providerName}"), Method.PUT);
 
             request.AddUrlSegment("pointId", pointId.ToString());
             request.AddUrlSegment("providerName", providerName);
@@ -137,7 +137,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Publishing
         //[WebInvoke(Method = "PUT", UriTemplate = "/{pointId}/?providerName={providerName}&createNew={createNew}&itemTemplate={itemTemplate}")]
         public DataItemContext<PublishingPointDetailViewModel> SavePublishingPoint(DataItemContext<PublishingPointDetailViewModel> point, string providerName, Guid pointId, bool createNew, string itemTemplate)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{pointId}/?providerName={providerName}&createNew={createNew}&itemTemplate={itemTemplate}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/{pointId}/?providerName={providerName}&createNew={createNew}&itemTemplate={itemTemplate}"), Method.PUT);
 
             request.AddUrlSegment("pointId", pointId.ToString());
             request.AddUrlSegment("providerName", providerName);
@@ -152,7 +152,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Publishing
         //[WebInvoke(Method = "PUT", UriTemplate = "/setactive/{pointId}/?providerName={providerName}&setActive={setActive}")]
         public bool SetActive(string providerName, Guid pointId, bool setActive)
         {
-            var request = new RestRequest(this.ServiceUrl + "/setactive/{pointId}/?providerName={providerName}&setActive={setActive}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/setactive/{pointId}/?providerName={providerName}&setActive={setActive}"), Method.PUT);
 
             request.AddUrlSegment("pointId", pointId.ToString());
             request.AddUrlSegment("providerName", providerName);

@@ -19,7 +19,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Localization
         //[WebInvoke(Method = "DELETE", UriTemplate = "{displayUICulture}/{editUICulture}/{displayClassId}/{editClassId}/{displayKey}/{editKey}/?provider={provider}")]
         public bool DeleteResource(string displayUICulture, string editUICulture, Guid displayClassId, Guid editClassId, string displayKey, string editKey, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "{displayUICulture}/{editUICulture}/{displayClassId}/{editClassId}/{displayKey}/{editKey}/?provider={provider}", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("{displayUICulture}/{editUICulture}/{displayClassId}/{editClassId}/{displayKey}/{editKey}/?provider={provider}"), Method.DELETE);
 
             request.AddUrlSegment("displayUICulture", displayUICulture);
             request.AddUrlSegment("editUICulture", editUICulture);
@@ -35,7 +35,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Localization
         //[WebGet(UriTemplate = "{displayUICulture}/{editUICulture}/{displayClassId}/{editClassId}/{displayKey}/{editKey}/?provider={provider}")]
         public DualResourceEntry GetResource(string displayUICulture, string editUICulture, Guid displayClassId, Guid editClassId, string displayKey, string editKey, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "{displayUICulture}/{editUICulture}/{displayClassId}/{editClassId}/{displayKey}/{editKey}/?provider={provider}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("{displayUICulture}/{editUICulture}/{displayClassId}/{editClassId}/{displayKey}/{editKey}/?provider={provider}"), Method.GET);
 
             request.AddUrlSegment("displayUICulture", displayUICulture);
             request.AddUrlSegment("editUICulture", editUICulture);
@@ -51,7 +51,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Localization
         //[WebGet(UriTemplate = "{displayUICulture=null}/{editUICulture=null}/{displayClassId=null}/{editClassId=null}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}")]
         public CollectionContext<DualResourceEntry> GetResources(string displayUICulture, string editUICulture, Guid displayClassId, Guid editClassId, string provider, string sortExpression, int skip, int take, string filter)
         {
-            var request = new RestRequest(this.ServiceUrl + "{displayUICulture}/{editUICulture}/{displayClassId}/{editClassId}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("{displayUICulture}/{editUICulture}/{displayClassId}/{editClassId}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}"), Method.GET);
 
             request.AddUrlSegment("displayUICulture", displayUICulture);
             request.AddUrlSegment("editUICulture", editUICulture);
@@ -69,7 +69,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Localization
         //[WebInvoke(Method = "PUT", UriTemplate = "{displayUICulture}/{editUICulture}/{displayClassId}/{editClassId}/{displayKey}/{editKey}/?provider={provider}")]
         public DualResourceEntry SaveResource(string[][] propertyBag, string displayUICulture, string editUICulture, Guid displayClassId, Guid editClassId, string displayKey, string editKey, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "{displayUICulture}/{editUICulture}/{displayClassId}/{editClassId}/{displayKey}/{editKey}/?provider={provider}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("{displayUICulture}/{editUICulture}/{displayClassId}/{editClassId}/{displayKey}/{editKey}/?provider={provider}"), Method.PUT);
 
             request.AddUrlSegment("displayUICulture", displayUICulture);
             request.AddUrlSegment("editUICulture", editUICulture);

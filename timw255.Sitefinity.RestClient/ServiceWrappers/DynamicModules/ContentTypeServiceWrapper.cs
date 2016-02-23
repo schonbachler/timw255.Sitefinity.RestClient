@@ -20,7 +20,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebInvoke(Method = "POST", UriTemplate = "/activate/?provider={provider}")]
         public ContentTypeContext ActivateModule(Guid moduleId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/activate/?provider={provider}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/activate/?provider={provider}"), Method.POST);
 
             request.AddUrlSegment("provider", provider);
 
@@ -32,7 +32,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebGet(UriTemplate = "/checkModuleName/?moduleName={moduleName}")]
         public ModuleNameContext CheckIfModuleWithSpecifiedNameAlreadyExists(string moduleName)
         {
-            var request = new RestRequest(this.ServiceUrl + "/checkModuleName/?moduleName={moduleName}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/checkModuleName/?moduleName={moduleName}"), Method.GET);
 
             request.AddUrlSegment("moduleName", moduleName);
 
@@ -42,7 +42,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebInvoke(Method = "POST", UriTemplate = "/deactivate/?provider={provider}")]
         public ContentTypeContext DeactivateModule(Guid moduleId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/deactivate/?provider={provider}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/deactivate/?provider={provider}"), Method.POST);
 
             request.AddUrlSegment("provider", provider);
 
@@ -54,7 +54,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebInvoke(Method = "DELETE", UriTemplate = "/content-type/{contentTypeId}/?moduleId={moduleId}&provider={provider}")]
         public DeleteContentTypeContext DeleteDynamicContentType(Guid contentTypeId, Guid moduleId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/content-type/{contentTypeId}/?moduleId={moduleId}&provider={provider}", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("/content-type/{contentTypeId}/?moduleId={moduleId}&provider={provider}"), Method.DELETE);
 
             request.AddUrlSegment("contentTypeId", contentTypeId.ToString());
             request.AddUrlSegment("moduleId", moduleId.ToString());
@@ -66,7 +66,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebInvoke(Method = "DELETE", UriTemplate = "/{moduleId}/?provider={provider}&deleteData={deleteData}")]
         public DeleteContentTypeContext DeleteModule(Guid moduleId, string provider, bool deleteData)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{moduleId}/?provider={provider}&deleteData={deleteData}", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("/{moduleId}/?provider={provider}&deleteData={deleteData}"), Method.DELETE);
 
             request.AddUrlSegment("moduleId", moduleId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -78,7 +78,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebGet(UriTemplate = "/{moduleId}/types/{contentTypeId}/?provider={provider}")]
         public ContentTypeContext GetContentType(Guid moduleId, Guid contentTypeId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{moduleId}/types/{contentTypeId}/?provider={provider}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/{moduleId}/types/{contentTypeId}/?provider={provider}"), Method.GET);
 
             request.AddUrlSegment("moduleId", moduleId.ToString());
             request.AddUrlSegment("contentTypeId", contentTypeId.ToString());
@@ -90,7 +90,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebGet(UriTemplate = "/{moduleId}/types/{contentTypeId}/availableparents/?provider={provider}")]
         public CollectionContext<ContentTypeContext> GetContentTypeAvailableParents(Guid moduleId, Guid contentTypeId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{moduleId}/types/{contentTypeId}/availableparents/?provider={provider}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/{moduleId}/types/{contentTypeId}/availableparents/?provider={provider}"), Method.GET);
 
             request.AddUrlSegment("moduleId", moduleId.ToString());
             request.AddUrlSegment("contentTypeId", contentTypeId.ToString());
@@ -102,7 +102,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebGet(UriTemplate = "/{moduleId}/types/{contentTypeId}/types/?provider={provider}", ResponseFormat = WebMessageFormat.Xml)]
         public CollectionContext<ContentTypeContext> GetContentTypeChildren(Guid moduleId, Guid contentTypeId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{moduleId}/types/{contentTypeId}/types/?provider={provider}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/{moduleId}/types/{contentTypeId}/types/?provider={provider}"), Method.GET);
 
             request.AddUrlSegment("moduleId", moduleId.ToString());
             request.AddUrlSegment("contentTypeId", contentTypeId.ToString());
@@ -114,7 +114,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebGet(UriTemplate = "/{moduleId}/types/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}")]
         public CollectionContext<ContentTypeContext> GetContentTypes(Guid moduleId, string provider, string sortExpression, int skip, int take, string filter)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{moduleId}/types/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/{moduleId}/types/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}"), Method.GET);
 
             request.AddUrlSegment("moduleId", moduleId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -129,7 +129,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebGet(UriTemplate = "/{moduleId}/types/tree/?provider={provider}&filter={filter}")]
         public CollectionContext<ContentTypeTreeItemContext> GetContentTypesTree(Guid moduleId, string provider, string filter)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{moduleId}/types/tree/?provider={provider}&filter={filter}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/{moduleId}/types/tree/?provider={provider}&filter={filter}"), Method.GET);
 
             request.AddUrlSegment("moduleId", moduleId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -141,7 +141,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebGet(UriTemplate = "/{moduleId}/?provider={provider}")]
         public ContentTypeContext GetModule(Guid moduleId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{moduleId}/?provider={provider}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/{moduleId}/?provider={provider}"), Method.GET);
 
             request.AddUrlSegment("moduleId", moduleId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -152,7 +152,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebGet(UriTemplate = "/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}")]
         public CollectionContext<ContentTypeContext> GetModules(string provider, string sortExpression, int skip, int take, string filter)
         {
-            var request = new RestRequest(this.ServiceUrl + "/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}"), Method.GET);
 
             request.AddUrlSegment("provider", provider);
             request.AddUrlSegment("sortExpression", sortExpression);
@@ -166,7 +166,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebInvoke(Method = "PUT", UriTemplate = "/{moduleId}/?provider={provider}&updateWidgetTemplates={updateWidgetTemplates}")]
         public ContentTypeContext SaveContentType(Guid moduleId, ContentTypeContext contentType, string provider, bool updateWidgetTemplates)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{moduleId}/?provider={provider}&updateWidgetTemplates={updateWidgetTemplates}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/{moduleId}/?provider={provider}&updateWidgetTemplates={updateWidgetTemplates}"), Method.PUT);
 
             request.AddUrlSegment("moduleId", moduleId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -180,7 +180,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebInvoke(Method = "PUT", UriTemplate = "/{moduleId}/updateModuleName/")]
         public ContentTypeSimpleContext UpdateModuleNameAndDescription(Guid moduleId, ContentTypeSimpleContext contentTypeContext)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{moduleId}/updateModuleName/", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/{moduleId}/updateModuleName/"), Method.PUT);
 
             request.AddUrlSegment("moduleId", moduleId.ToString());
 

@@ -20,7 +20,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Versioning
         //[WebInvoke(Method = "DELETE", UriTemplate = "/{changeId}/")]
         public bool DeleteChange(Guid changeId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{changeId}/", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("/{changeId}/"), Method.DELETE);
 
             request.AddUrlSegment("changeId", changeId.ToString());
 
@@ -30,7 +30,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Versioning
         //[WebGet(UriTemplate = "/?itemType={itemType}&itemId={itemId}")]
         public CollectionContext<WcfChange> GetItemVersionHistory(string itemType, Guid itemId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/?itemType={itemType}&itemId={itemId}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/?itemType={itemType}&itemId={itemId}"), Method.GET);
 
             request.AddUrlSegment("itemType", itemType);
             request.AddUrlSegment("itemId", itemId.ToString());
@@ -41,7 +41,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Versioning
         //[WebInvoke(Method = "PUT", UriTemplate = "/{changeId}/")]
         public bool SaveChangeComment(string comment, Guid changeId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{changeId}/", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/{changeId}/"), Method.PUT);
 
             request.AddUrlSegment("changeId", changeId.ToString());
 

@@ -20,7 +20,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers
         //[WebGet(UriTemplate = "/All")]
         public ProjectInfo GetAll()
         {
-            var request = new RestRequest(this.ServiceUrl + "/All", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/All"), Method.GET);
 
             return ExecuteRequest<ProjectInfo>(request);
         }
@@ -28,7 +28,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers
         //[WebGet(UriTemplate = "/Name")]
         public string GetName()
         {
-            var request = new RestRequest(this.ServiceUrl + "/Name", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/Name"), Method.GET);
 
             return ExecuteRequest<string>(request);
         }
@@ -36,7 +36,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers
         //[WebGet(UriTemplate = "/SfVersion")]
         public string GetSfVersion()
         {
-            var request = new RestRequest(this.ServiceUrl + "/SfVersion", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/SfVersion"), Method.GET);
 
             return ExecuteRequest<string>(request);
         }
@@ -44,7 +44,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers
         //[WebGet(UriTemplate = "/Version")]
         public string GetVersion()
         {
-            var request = new RestRequest(this.ServiceUrl + "/Version", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/Version"), Method.GET);
 
             return ExecuteRequest<string>(request);
         }

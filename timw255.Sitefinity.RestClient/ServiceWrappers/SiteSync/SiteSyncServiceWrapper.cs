@@ -21,7 +21,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.SiteSync
         //[WebInvoke(Method = "POST", UriTemplate = "/CalculateDependentItems/")]
         public IDictionary<string, IDictionary<Guid, IEnumerable<Guid>>> CalculateDependentItems(SyncSettings settings)
         {
-            var request = new RestRequest(this.ServiceUrl + "/CalculateDependentItems/", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/CalculateDependentItems/"), Method.POST);
 
             request.AddParameter("application/json", SerializeObject(settings), ParameterType.RequestBody);
 
@@ -31,7 +31,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.SiteSync
         //[WebGet(UriTemplate = "/ConfirmConnection/")]
         public bool ConfirmConnection()
         {
-            var request = new RestRequest(this.ServiceUrl + "/ConfirmConnection/", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/ConfirmConnection/"), Method.GET);
 
             return ExecuteRequest<bool>(request);
         }
@@ -39,7 +39,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.SiteSync
         //[WebInvoke(Method = "POST", UriTemplate = "/ForceStopSync/")]
         public void ForceStopSync(Guid syncTaskId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/ForceStopSync/", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/ForceStopSync/"), Method.POST);
 
             request.AddParameter("application/json", SerializeObject(syncTaskId), ParameterType.RequestBody);
 
@@ -49,7 +49,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.SiteSync
         //[WebGet(UriTemplate = "/GenerateSiteSyncLogEntries/")]
         public void GenerateSiteSyncLogEntries()
         {
-            var request = new RestRequest(this.ServiceUrl + "/GenerateSiteSyncLogEntries/", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/GenerateSiteSyncLogEntries/"), Method.GET);
 
             ExecuteRequest(request);
         }
@@ -57,7 +57,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.SiteSync
         //[WebInvoke(Method = "GET", UriTemplate = "/GetCurrentSyncState/?syncTaskId={syncTaskId}")]
         public double GetCurrentSyncState(Guid syncTaskId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/GetCurrentSyncState/?syncTaskId={syncTaskId}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/GetCurrentSyncState/?syncTaskId={syncTaskId}"), Method.GET);
 
             request.AddUrlSegment("syncTaskId", syncTaskId.ToString());
 
@@ -67,7 +67,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.SiteSync
         //[WebGet(UriTemplate = "/GetInfo/")]
         public TargetServerInfo GetInfo()
         {
-            var request = new RestRequest(this.ServiceUrl + "/GetInfo/", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/GetInfo/"), Method.GET);
 
             return ExecuteRequest<TargetServerInfo>(request);
         }
@@ -75,7 +75,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.SiteSync
         //[WebGet(UriTemplate = "/LastSyncSummary/?serverId={serverId}")]
         public SyncSummary GetLastSyncSummary(Guid serverId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/LastSyncSummary/?serverId={serverId}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/LastSyncSummary/?serverId={serverId}"), Method.GET);
 
             request.AddUrlSegment("serverId", serverId.ToString());
 
@@ -85,7 +85,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.SiteSync
         //[WebInvoke(Method = "POST", UriTemplate = "/GetPendingItems/?typeName={typeName}&server={server}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}")]
         public CollectionContext<SiteSyncLogEntryViewModel> GetPendingItems(string typeName, string server, string sortExpression, int skip, int take, string filter, string taxFilter)
         {
-            var request = new RestRequest(this.ServiceUrl + "/GetPendingItems/?typeName={typeName}&server={server}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/GetPendingItems/?typeName={typeName}&server={server}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}"), Method.POST);
 
             request.AddUrlSegment("typeName", typeName);
             request.AddUrlSegment("server", server);
@@ -102,7 +102,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.SiteSync
         //[WebGet(UriTemplate = "/GetPendingItemsCount/?typeName={typeName}&server={server}&filter={filter}")]
         public int GetPendingItemsCount(string typeName, string server, string filter)
         {
-            var request = new RestRequest(this.ServiceUrl + "/GetPendingItemsCount/?typeName={typeName}&server={server}&filter={filter}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/GetPendingItemsCount/?typeName={typeName}&server={server}&filter={filter}"), Method.GET);
 
             request.AddUrlSegment("typeName", typeName);
             request.AddUrlSegment("server", server);
@@ -114,7 +114,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.SiteSync
         //[WebInvoke(Method = "POST", UriTemplate = "/GetPendingItemsIds/?typeName={typeName}&server={server}")]
         public IEnumerable<Guid> GetPendingItemsIds(string typeName, string server, string taxFilter)
         {
-            var request = new RestRequest(this.ServiceUrl + "/GetPendingItemsIds/?typeName={typeName}&server={server}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/GetPendingItemsIds/?typeName={typeName}&server={server}"), Method.POST);
 
             request.AddUrlSegment("typeName", typeName);
             request.AddUrlSegment("server", server);
@@ -127,7 +127,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.SiteSync
         //[WebInvoke(Method = "POST", UriTemplate = "/SyncItemErrorDetails/?server={server}&type={type}&getErrors={getErrors}")]
         public IEnumerable<string> GetSyncItemErrorDetails(string server, string type, bool getErrors)
         {
-            var request = new RestRequest(this.ServiceUrl + "/SyncItemErrorDetails/?server={server}&type={type}&getErrors={getErrors}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/SyncItemErrorDetails/?server={server}&type={type}&getErrors={getErrors}"), Method.POST);
 
             request.AddUrlSegment("server", server);
             request.AddUrlSegment("type", type);
@@ -139,7 +139,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.SiteSync
         //[WebInvoke(Method = "POST", UriTemplate = "/SyncTypeDetails/")]
         public IEnumerable<SummaryItemTypeDetails> GetSyncTypeDetails(string server)
         {
-            var request = new RestRequest(this.ServiceUrl + "/SyncTypeDetails/", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/SyncTypeDetails/"), Method.POST);
 
             request.AddParameter("application/json", SerializeObject(server), ParameterType.RequestBody);
 
@@ -149,7 +149,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.SiteSync
         //[WebInvoke(Method = "POST", UriTemplate = "/MigrateProviders/")]
         public SiteSyncMigrationMappings MigrateProviders(ProviderMigrationRequest providersReq)
         {
-            var request = new RestRequest(this.ServiceUrl + "/MigrateProviders/", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/MigrateProviders/"), Method.POST);
 
             request.AddParameter("application/json", SerializeObject(providersReq), ParameterType.RequestBody);
 
@@ -159,7 +159,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.SiteSync
         //[WebGet(UriTemplate = "/RequestTargetInfo/?serverId={serverId}")]
         public TargetServerInfo RequestTargetInfo(Guid serverId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/RequestTargetInfo/?serverId={serverId}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/RequestTargetInfo/?serverId={serverId}"), Method.GET);
 
             request.AddUrlSegment("serverId", serverId.ToString());
 
@@ -169,7 +169,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.SiteSync
         //[WebGet(UriTemplate = "/RequestTargetSites/?url={url}&userName={userName}&password={password}&provider={provider}")]
         public TargetServerInfo RequestTargetSites(string url, string userName, string password, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/RequestTargetSites/?url={url}&userName={userName}&password={password}&provider={provider}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/RequestTargetSites/?url={url}&userName={userName}&password={password}&provider={provider}"), Method.GET);
 
             request.AddUrlSegment("url", url);
             request.AddUrlSegment("userName", userName);
@@ -182,7 +182,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.SiteSync
         //[WebInvoke(Method = "POST", UriTemplate = "/RequestValidation/")]
         public string RequestValidation(SyncSettings settings)
         {
-            var request = new RestRequest(this.ServiceUrl + "/RequestValidation/", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/RequestValidation/"), Method.POST);
 
             request.AddParameter("application/json", SerializeObject(settings), ParameterType.RequestBody);
 
@@ -192,7 +192,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.SiteSync
         //[WebInvoke(Method = "POST", UriTemplate = "/Schedule/")]
         public void Schedule(SyncSettings settings)
         {
-            var request = new RestRequest(this.ServiceUrl + "/Schedule/", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/Schedule/"), Method.POST);
 
             request.AddParameter("application/json", SerializeObject(settings), ParameterType.RequestBody);
 
@@ -202,7 +202,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.SiteSync
         //[WebInvoke(Method = "POST", UriTemplate = "/StartSync/")]
         public void StartSync(SyncSettings settings)
         {
-            var request = new RestRequest(this.ServiceUrl + "/StartSync/", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/StartSync/"), Method.POST);
 
             request.AddParameter("application/json", SerializeObject(settings), ParameterType.RequestBody);
 
@@ -212,7 +212,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.SiteSync
         //[WebInvoke(Method = "POST", UriTemplate = "/StopSync/")]
         public void StopSync(Guid syncTaskId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/StopSync/", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/StopSync/"), Method.POST);
 
             request.AddParameter("application/json", SerializeObject(syncTaskId.ToString()), ParameterType.RequestBody);
 
@@ -222,7 +222,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.SiteSync
         //[WebGet(UriTemplate = "/TestConnection/?serverId={serverId}")]
         public string TestConnection(Guid serverId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/TestConnection/?serverId={serverId}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/TestConnection/?serverId={serverId}"), Method.GET);
 
             request.AddUrlSegment("serverId", serverId.ToString());
 
@@ -232,7 +232,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.SiteSync
         //[WebInvoke(Method = "POST", UriTemplate = "/Validate/")]
         public List<string> Validate(SiteSyncValidationRequest validationRequest)
         {
-            var request = new RestRequest(this.ServiceUrl + "/Validate/", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/Validate/"), Method.POST);
 
             request.AddParameter("application/json", SerializeObject(validationRequest), ParameterType.RequestBody);
 

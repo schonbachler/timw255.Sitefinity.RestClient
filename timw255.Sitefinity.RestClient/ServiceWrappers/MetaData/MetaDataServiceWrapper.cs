@@ -20,7 +20,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.MetaData
         //[WebInvoke(Method = "DELETE", UriTemplate = "{fieldId}/?typeId={typeId}")]
         public bool DeleteField(Guid fieldId, Guid typeId)
         {
-            var request = new RestRequest(this.ServiceUrl + "{fieldId}/?typeId={typeId}", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("{fieldId}/?typeId={typeId}"), Method.DELETE);
 
             request.AddUrlSegment("fieldId", fieldId.ToString());
             request.AddUrlSegment("typeId", typeId.ToString());
@@ -31,7 +31,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.MetaData
         //[WebGet(UriTemplate = "{fieldId}/?typeId={typeId}")]
         public FieldType GetField(Guid fieldId, Guid typeId)
         {
-            var request = new RestRequest(this.ServiceUrl + "{fieldId}/?typeId={typeId}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("{fieldId}/?typeId={typeId}"), Method.GET);
 
             request.AddUrlSegment("fieldId", fieldId.ToString());
             request.AddUrlSegment("typeId", typeId.ToString());
@@ -42,7 +42,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.MetaData
         //[WebGet(UriTemplate = "/?typeId={typeId}")]
         public CollectionContext<FieldType> GetFields(Guid typeId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/?typeId={typeId}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/?typeId={typeId}"), Method.GET);
 
             request.AddUrlSegment("typeId", typeId.ToString());
 

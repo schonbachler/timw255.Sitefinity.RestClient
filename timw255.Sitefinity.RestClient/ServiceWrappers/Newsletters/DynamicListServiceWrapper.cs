@@ -20,7 +20,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebGet(UriTemplate = "/info/{dynamicListProviderName}/")]
         public CollectionContext<DynamicListInfoViewModel> GetDynamicListsInfo(string dynamicListProviderName)
         {
-            var request = new RestRequest(this.ServiceUrl + "/info/{dynamicListProviderName}/", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/info/{dynamicListProviderName}/"), Method.GET);
 
             request.AddUrlSegment("dynamicListProviderName", dynamicListProviderName);
 

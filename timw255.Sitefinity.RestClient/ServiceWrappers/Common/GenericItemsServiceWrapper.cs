@@ -20,7 +20,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Common
         //[WebInvoke(Method = "GET", UriTemplate = "/?itemType={itemType}&itemSurrogateType={itemSurrogateType}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&provider={providerName}&allProviders={allProviders}&ignoreAdminUsers={ignoreAdminUsers}")]
         public CollectionContext<WcfItemBase> GetGenericItems(string itemType, string itemSurrogateType, string sortExpression, int skip, int take, string filter, string providerName, bool allProviders, bool ignoreAdminUsers)
         {
-            var request = new RestRequest(this.ServiceUrl + "/?itemType={itemType}&itemSurrogateType={itemSurrogateType}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&provider={providerName}&allProviders={allProviders}&ignoreAdminUsers={ignoreAdminUsers}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/?itemType={itemType}&itemSurrogateType={itemSurrogateType}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&provider={providerName}&allProviders={allProviders}&ignoreAdminUsers={ignoreAdminUsers}"), Method.GET);
 
             request.AddUrlSegment("itemType", itemType);
             request.AddUrlSegment("itemSurrogateType", itemSurrogateType);

@@ -20,7 +20,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "PUT", UriTemplate = "/Template/changeTemplate/{draftId}/?newTemplateId={newTemplateId}")]
         public bool ChangeParentTemplate(Guid draftId, Guid newTemplateId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/Template/changeTemplate/{draftId}/?newTemplateId={newTemplateId}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/Template/changeTemplate/{draftId}/?newTemplateId={newTemplateId}"), Method.PUT);
 
             request.AddUrlSegment("draftId", draftId.ToString());
             request.AddUrlSegment("newTemplateId", newTemplateId.ToString());
@@ -31,7 +31,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "PUT", UriTemplate = "/changeTemplate/{pageId}/?newTemplateId={newTemplateId}")]
         public void ChangeTemplate(Guid pageId, Guid newTemplateId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/changeTemplate/{pageId}/?newTemplateId={newTemplateId}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/changeTemplate/{pageId}/?newTemplateId={newTemplateId}"), Method.PUT);
 
             request.AddUrlSegment("pageId", pageId.ToString());
             request.AddUrlSegment("newTemplateId", newTemplateId.ToString());
@@ -42,7 +42,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "PUT", UriTemplate = "/Page/Theme/{draftId}/?isTemplate={isTemplate}")]
         public bool ChangeTheme(Guid draftId, string themeName, bool isTemplate)
         {
-            var request = new RestRequest(this.ServiceUrl + "/Page/Theme/{draftId}/?isTemplate={isTemplate}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/Page/Theme/{draftId}/?isTemplate={isTemplate}"), Method.PUT);
 
             request.AddUrlSegment("draftId", draftId.ToString());
             request.AddUrlSegment("isTemplate", isTemplate.ToString());
@@ -55,7 +55,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "DELETE", UriTemplate = "/Form/{draftId}/")]
         public bool DiscardFormDraft(Guid draftId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/Form/{draftId}/", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("/Form/{draftId}/"), Method.DELETE);
 
             request.AddUrlSegment("draftId", draftId.ToString());
 
@@ -65,7 +65,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "DELETE", UriTemplate = "/Page/{draftId}/")]
         public bool DiscardPageDraft(Guid draftId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/Page/{draftId}/", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("/Page/{draftId}/"), Method.DELETE);
 
             request.AddUrlSegment("draftId", draftId.ToString());
 
@@ -75,7 +75,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "DELETE", UriTemplate = "/Template/{draftId}/")]
         public bool DiscardTemplateDraft(Guid draftId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/Template/{draftId}/", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("/Template/{draftId}/"), Method.DELETE);
 
             request.AddUrlSegment("draftId", draftId.ToString());
 
@@ -85,7 +85,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "PUT", UriTemplate = "/Page/InitializeSplitPage/?sourceLanguage={sourceLanguage}&targetLanguage={targetLanguage}")]
         public void InitializeSplitPage(Guid targetNodeId, string sourceLanguage, string targetLanguage)
         {
-            var request = new RestRequest(this.ServiceUrl + "/Page/InitializeSplitPage/?sourceLanguage={sourceLanguage}&targetLanguage={targetLanguage}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/Page/InitializeSplitPage/?sourceLanguage={sourceLanguage}&targetLanguage={targetLanguage}"), Method.PUT);
 
             request.AddUrlSegment("sourceLanguage", sourceLanguage);
             request.AddUrlSegment("targetLanguage", targetLanguage);
@@ -98,7 +98,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "PUT", UriTemplate = "/Form/Publish/{draftId}/")]
         public bool PublishFormDraft(FormDescriptionViewModel formViewModel, Guid draftId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/Form/Publish/{draftId}/", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/Form/Publish/{draftId}/"), Method.PUT);
 
             request.AddUrlSegment("draftId", draftId.ToString());
 
@@ -110,7 +110,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "PUT", UriTemplate = "/Page/Publish/")]
         public bool PublishPageDraft(Guid draftId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/Page/Publish/", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/Page/Publish/"), Method.PUT);
 
             request.AddParameter("application/json", SerializeObject(draftId), ParameterType.RequestBody);
 
@@ -120,7 +120,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "PUT", UriTemplate = "/Template/Publish/")]
         public bool PublishTemplateDraft(Guid draftId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/Template/Publish/", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/Template/Publish/"), Method.PUT);
 
             request.AddParameter("application/json", SerializeObject(draftId), ParameterType.RequestBody);
 
@@ -130,7 +130,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "PUT", UriTemplate = "rollback/")]
         public ZoneEditorWebServiceArgs Rollback(ZoneEditorWebServiceArgs state)
         {
-            var request = new RestRequest(this.ServiceUrl + "rollback/", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("rollback/"), Method.PUT);
 
             request.AddParameter("application/json", SerializeObject(state), ParameterType.RequestBody);
 
@@ -140,7 +140,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "PUT", UriTemplate = "/Form/Save/{draftId}/")]
         public bool SaveFormDraft(FormDescriptionViewModel formViewModel, Guid draftId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/Form/Save/{draftId}/", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/Form/Save/{draftId}/"), Method.PUT);
 
             request.AddUrlSegment("draftId", draftId.ToString());
 
@@ -152,7 +152,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "PUT", UriTemplate = "/Page/Save/?workflowOperation={workflowOperation}")]
         public bool SavePageDraft(WcfPageData wcfPageData, string workflowOperation)
         {
-            var request = new RestRequest(this.ServiceUrl + "/Page/Save/?workflowOperation={workflowOperation}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/Page/Save/?workflowOperation={workflowOperation}"), Method.PUT);
 
             request.AddUrlSegment("workflowOperation", workflowOperation);
 
@@ -164,7 +164,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "PUT", UriTemplate = "/Template/Save/")]
         public bool SaveTemplateDraft(Guid draftId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/Template/Save/", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/Template/Save/"), Method.PUT);
 
             request.AddParameter("application/json", SerializeObject(draftId), ParameterType.RequestBody);
 
@@ -174,7 +174,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "PUT", UriTemplate = "setoverride/{editable}/")]
         public ZoneEditorWebServiceArgs SetOverride(ZoneEditorWebServiceArgs state, string editable)
         {
-            var request = new RestRequest(this.ServiceUrl + "setoverride/{editable}/", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("setoverride/{editable}/"), Method.PUT);
 
             request.AddUrlSegment("editable", editable);
 
@@ -186,7 +186,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "PUT", UriTemplate = "/Page/LocalizationStrategy/?strategy={strategy}&copyData={copyData}")]
         public void SetPageLocalizationStrategy(Guid pageNodeId, string strategy, bool copyData)
         {
-            var request = new RestRequest(this.ServiceUrl + "/Page/LocalizationStrategy/?strategy={strategy}&copyData={copyData}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/Page/LocalizationStrategy/?strategy={strategy}&copyData={copyData}"), Method.PUT);
 
             request.AddUrlSegment("strategy", strategy);
             request.AddUrlSegment("copyData", copyData.ToString());
@@ -199,7 +199,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "PUT", UriTemplate = "/Page/SplitPage/")]
         public void SplitPage(Guid pageNodeId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/Page/SplitPage/", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/Page/SplitPage/"), Method.PUT);
 
             request.AddParameter("application/json", SerializeObject(pageNodeId), ParameterType.RequestBody);
 
@@ -209,7 +209,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "GET", UriTemplate = "/Page/TakeOwnership/{draftId}/")]
         public void TakePageOwnership(Guid draftId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/Page/TakeOwnership/{draftId}/", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/Page/TakeOwnership/{draftId}/"), Method.GET);
 
             request.AddUrlSegment("draftId", draftId.ToString());
 
@@ -219,7 +219,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "GET", UriTemplate = "/Template/TakeOwnership/{draftId}/")]
         public void TemplateTakeOwnership(Guid draftId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/Template/TakeOwnership/{draftId}/", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/Template/TakeOwnership/{draftId}/"), Method.GET);
 
             request.AddUrlSegment("draftId", draftId.ToString());
 
@@ -229,7 +229,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "GET", UriTemplate = "/Form/UnlockForm/{formId}/")]
         public void UnlockForm(Guid formId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/Form/UnlockForm/{formId}/", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/Form/UnlockForm/{formId}/"), Method.GET);
 
             request.AddUrlSegment("formId", formId.ToString());
 
@@ -239,7 +239,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "GET", UriTemplate = "/Page/UnlockPage/{pageDataId}/")]
         public void UnlockPage(Guid pageDataId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/Page/UnlockPage/{pageDataId}/", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/Page/UnlockPage/{pageDataId}/"), Method.GET);
 
             request.AddUrlSegment("pageDataId", pageDataId.ToString());
 
@@ -249,7 +249,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "GET", UriTemplate = "/Template/UnlockTemplate/{templateId}/")]
         public void UnlockTemplate(Guid templateId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/Template/UnlockTemplate/{templateId}/", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/Template/UnlockTemplate/{templateId}/"), Method.GET);
 
             request.AddUrlSegment("templateId", templateId.ToString());
 
@@ -259,7 +259,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "PUT", UriTemplate = "/Control/")]
         public ZoneEditorWebServiceArgs UpdateControlState(ZoneEditorWebServiceArgs state)
         {
-            var request = new RestRequest(this.ServiceUrl + "/Control/", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/Control/"), Method.PUT);
 
             request.AddParameter("application/json", SerializeObject(state), ParameterType.RequestBody);
 
@@ -269,7 +269,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "PUT", UriTemplate = "/Layout/Style/{LayoutControlId}/{PageId}/{isTemplate}/")]
         public ZoneEditorWebServiceArgs UpdateLayoutControlStyles(ZoneEditorWebServiceArgs args, Guid layoutControlId, Guid pageId, string isTemplate)
         {
-            var request = new RestRequest(this.ServiceUrl + "/Layout/Style/{LayoutControlId}/{PageId}/{isTemplate}/", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/Layout/Style/{LayoutControlId}/{PageId}/{isTemplate}/"), Method.PUT);
 
             request.AddUrlSegment("LayoutControlId", layoutControlId.ToString());
             request.AddUrlSegment("PageId", pageId.ToString());
@@ -283,7 +283,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "PUT", UriTemplate = "/Layout/")]
         public ZoneEditorWebServiceArgs UpdateLayoutState(ZoneEditorWebServiceArgs state)
         {
-            var request = new RestRequest(this.ServiceUrl + "/Layout/", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/Layout/"), Method.PUT);
 
             request.AddParameter("application/json", SerializeObject(state), ParameterType.RequestBody);
 

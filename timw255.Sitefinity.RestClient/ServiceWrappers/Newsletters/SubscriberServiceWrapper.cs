@@ -20,7 +20,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebInvoke(Method = "POST", UriTemplate = "/add/{mailingListId}/?provider={provider}")]
         public bool AddSubscribers(Guid mailingListId, Guid[] subscriberIds, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/add/{mailingListId}/?provider={provider}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/add/{mailingListId}/?provider={provider}"), Method.POST);
 
             request.AddUrlSegment("mailingListId", mailingListId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -33,7 +33,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebInvoke(Method = "POST", UriTemplate = "/batchdelete/?provider={provider}")]
         public bool BatchDeleteSubscribers(Guid[] subscriberIds, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/batchdelete/?provider={provider}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/batchdelete/?provider={provider}"), Method.POST);
 
             request.AddUrlSegment("provider", provider);
 
@@ -45,7 +45,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebInvoke(Method = "DELETE", UriTemplate = "/{subscriberId}/?provider={provider}")]
         public bool DeleteSubscriber(Guid subscriberId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{subscriberId}/?provider={provider}", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("/{subscriberId}/?provider={provider}"), Method.DELETE);
 
             request.AddUrlSegment("subscriberId", subscriberId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -56,7 +56,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebGet(UriTemplate = "/mailingList/{mailingListId}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}")]
         public CollectionContext<SubscriberViewModel> GetMailingListSubscribers(Guid mailingListId, string provider, string sortExpression, int skip, int take, string filter)
         {
-            var request = new RestRequest(this.ServiceUrl + "/mailingList/{mailingListId}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/mailingList/{mailingListId}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}"), Method.GET);
 
             request.AddUrlSegment("mailingListId", mailingListId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -71,7 +71,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebGet(UriTemplate = "/{subscriberId}/?provider={provider}")]
         public SubscriberViewModel GetSubscriber(Guid subscriberId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{subscriberId}/?provider={provider}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/{subscriberId}/?provider={provider}"), Method.GET);
 
             request.AddUrlSegment("subscriberId", subscriberId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -82,7 +82,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebGet(UriTemplate = "/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}")]
         public CollectionContext<SubscriberViewModel> GetSubscribers(string provider, string sortExpression, int skip, int take, string filter)
         {
-            var request = new RestRequest(this.ServiceUrl + "/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}"), Method.GET);
 
             request.AddUrlSegment("provider", provider);
             request.AddUrlSegment("sortExpression", sortExpression);
@@ -96,7 +96,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebInvoke(Method = "POST", UriTemplate = "/remove/{mailingListId}/?provider={provider}")]
         public bool RemoveSubscribers(Guid mailingListId, Guid[] subscriberIds, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/remove/{mailingListId}/?provider={provider}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/remove/{mailingListId}/?provider={provider}"), Method.POST);
 
             request.AddUrlSegment("mailingListId", mailingListId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -109,7 +109,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebInvoke(Method = "PUT", UriTemplate = "/{subscriberId}/?provider={provider}")]
         public SubscriberViewModel SaveSubscriber(Guid subscriberId, SubscriberViewModel subscriber, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{subscriberId}/?provider={provider}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/{subscriberId}/?provider={provider}"), Method.PUT);
 
             request.AddUrlSegment("subscriberId", subscriberId.ToString());
             request.AddUrlSegment("provider", provider);

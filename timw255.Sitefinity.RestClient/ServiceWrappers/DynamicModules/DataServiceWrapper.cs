@@ -20,7 +20,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebInvoke(Method = "POST", UriTemplate = "parent/{parentId}/batch/?provider={providerName}&workflowOperation={workflowOperation}&language={deletedLanguage}&itemType={itemType}&checkRelatingData={checkRelatingData}")]
         public bool BatchDeleteChildItems(Guid[] ids, Guid parentId, string providerName, string workflowOperation, string deletedLanguage, string itemType, bool checkRelatingData)
         {
-            var request = new RestRequest(this.ServiceUrl + "parent/{parentId}/batch/?provider={providerName}&workflowOperation={workflowOperation}&language={deletedLanguage}&itemType={itemType}&checkRelatingData={checkRelatingData}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("parent/{parentId}/batch/?provider={providerName}&workflowOperation={workflowOperation}&language={deletedLanguage}&itemType={itemType}&checkRelatingData={checkRelatingData}"), Method.POST);
 
             request.AddUrlSegment("parentId", parentId.ToString());
             request.AddUrlSegment("providerName", providerName);
@@ -37,7 +37,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebInvoke(Method = "POST", UriTemplate = "batch/?provider={providerName}&workflowOperation={workflowOperation}&language={deletedLanguage}&itemType={itemType}&checkRelatingData={checkRelatingData}")]
         public bool BatchDeleteItems(Guid[] Ids, string providerName, string workflowOperation, string deletedLanguage, string itemType, bool checkRelatingData)
         {
-            var request = new RestRequest(this.ServiceUrl + "batch/?provider={providerName}&workflowOperation={workflowOperation}&language={deletedLanguage}&itemType={itemType}&checkRelatingData={checkRelatingData}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("batch/?provider={providerName}&workflowOperation={workflowOperation}&language={deletedLanguage}&itemType={itemType}&checkRelatingData={checkRelatingData}"), Method.POST);
 
             request.AddUrlSegment("providerName", providerName);
             request.AddUrlSegment("workflowOperation", workflowOperation);
@@ -53,7 +53,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebInvoke(Method = "PUT", UriTemplate = "batch/publish/?provider={providerName}&workflowOperation={workflowOperation}&itemType={itemType}")]
         public bool BatchPublish(Guid[] ids, string providerName, string workflowOperation, string itemType)
         {
-            var request = new RestRequest(this.ServiceUrl + "batch/publish/?provider={providerName}&workflowOperation={workflowOperation}&itemType={itemType}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("batch/publish/?provider={providerName}&workflowOperation={workflowOperation}&itemType={itemType}"), Method.PUT);
 
             request.AddUrlSegment("providerName", providerName);
             request.AddUrlSegment("workflowOperation", workflowOperation);
@@ -67,7 +67,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebInvoke(Method = "PUT", UriTemplate = "parent/{parentId}/batch/publish/?provider={providerName}&workflowOperation={workflowOperation}&itemType={itemType}")]
         public bool BatchPublishChildItems(Guid[] ids, Guid parentId, string providerName, string workflowOperation, string itemType)
         {
-            var request = new RestRequest(this.ServiceUrl + "parent/{parentId}/batch/publish/?provider={providerName}&workflowOperation={workflowOperation}&itemType={itemType}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("parent/{parentId}/batch/publish/?provider={providerName}&workflowOperation={workflowOperation}&itemType={itemType}"), Method.PUT);
 
             request.AddUrlSegment("parentId", parentId.ToString());
             request.AddUrlSegment("providerName", providerName);
@@ -82,7 +82,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebInvoke(Method = "PUT", UriTemplate = "batch/unpublish/?provider={providerName}&workflowOperation={workflowOperation}&itemType={itemType}")]
         public bool BatchUnpublish(Guid[] ids, string providerName, string workflowOperation, string itemType)
         {
-            var request = new RestRequest(this.ServiceUrl + "batch/unpublish/?provider={providerName}&workflowOperation={workflowOperation}&itemType={itemType}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("batch/unpublish/?provider={providerName}&workflowOperation={workflowOperation}&itemType={itemType}"), Method.PUT);
 
             request.AddUrlSegment("providerName", providerName);
             request.AddUrlSegment("workflowOperation", workflowOperation);
@@ -96,7 +96,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebInvoke(Method = "PUT", UriTemplate = "/parent/{parentId}/batch/unpublish/?provider={providerName}&workflowOperation={workflowOperation}&itemType={itemType}")]
         public bool BatchUnpublishChildItems(Guid[] ids, Guid parentId, string providerName, string workflowOperation, string itemType)
         {
-            var request = new RestRequest(this.ServiceUrl + "/parent/{parentId}/batch/unpublish/?provider={providerName}&workflowOperation={workflowOperation}&itemType={itemType}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/parent/{parentId}/batch/unpublish/?provider={providerName}&workflowOperation={workflowOperation}&itemType={itemType}"), Method.PUT);
 
             request.AddUrlSegment("parentId", parentId.ToString());
             request.AddUrlSegment("providerName", providerName);
@@ -111,7 +111,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebInvoke(Method = "DELETE", UriTemplate = "/parent/{parentId}/{dataItemId}/?provider={providerName}&itemType={itemType}&parentItemType={parentItemType}&parentType={parentType}&checkRelatingData={checkRelatingData}&language={deletedLanguage}&version={version}")]
         public bool DeleteChildDataItem(Guid parentId, Guid dataItemId, string providerName, string itemType, string parentItemType, string parentType, string deletedLanguage, bool checkRelatingData, string version)
         {
-            var request = new RestRequest(this.ServiceUrl + "/parent/{parentId}/{dataItemId}/?provider={providerName}&itemType={itemType}&parentItemType={parentItemType}&parentType={parentType}&checkRelatingData={checkRelatingData}&language={deletedLanguage}&version={version}", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("/parent/{parentId}/{dataItemId}/?provider={providerName}&itemType={itemType}&parentItemType={parentItemType}&parentType={parentType}&checkRelatingData={checkRelatingData}&language={deletedLanguage}&version={version}"), Method.DELETE);
 
             request.AddUrlSegment("parentId", parentId.ToString());
             request.AddUrlSegment("dataItemId", dataItemId.ToString());
@@ -129,7 +129,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebInvoke(Method = "DELETE", UriTemplate = "/{dataItemId}/?provider={provider}&itemType={itemType}&language={deletedLanguage}&checkRelatingData={checkRelatingData}&version={version}")]
         public bool DeleteDataItem(Guid dataItemId, string provider, string itemType, string deletedLanguage, bool checkRelatingData, string version)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{dataItemId}/?provider={provider}&itemType={itemType}&language={deletedLanguage}&checkRelatingData={checkRelatingData}&version={version}", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("/{dataItemId}/?provider={provider}&itemType={itemType}&language={deletedLanguage}&checkRelatingData={checkRelatingData}&version={version}"), Method.DELETE);
 
             request.AddUrlSegment("dataItemId", dataItemId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -144,7 +144,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebInvoke(Method = "DELETE", UriTemplate = "/temp/{dataItemId}/?provider={provider}&force={force}")]
         public bool DeleteTempItem(Guid dataItemId, string provider, bool force)
         {
-            var request = new RestRequest(this.ServiceUrl + "/temp/{dataItemId}/?provider={provider}&force={force}", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("/temp/{dataItemId}/?provider={provider}&force={force}"), Method.DELETE);
 
             request.AddUrlSegment("dataItemId", dataItemId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -156,7 +156,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebGet(UriTemplate = "/parent/{parentId}/{itemId}/?provider={providerName}&version={version}&itemType={itemType}&duplicate={duplicate}&checkOut={checkOut}")]
         public DynamicItemContext GetChildDataItem(Guid parentId, Guid itemId, string providerName, string version, string itemType, bool duplicate, bool checkOut = false)
         {
-            var request = new RestRequest(this.ServiceUrl + "/parent/{parentId}/{itemId}/?provider={providerName}&version={version}&itemType={itemType}&duplicate={duplicate}&checkOut={checkOut}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/parent/{parentId}/{itemId}/?provider={providerName}&version={version}&itemType={itemType}&duplicate={duplicate}&checkOut={checkOut}"), Method.GET);
 
             request.AddUrlSegment("parentId", parentId.ToString());
             request.AddUrlSegment("itemId", itemId.ToString());
@@ -172,7 +172,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebGet(UriTemplate = "/parent/{parentId}/?provider={provider}&itemType={itemType}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}")]
         public CollectionContext<DynamicContent> GetChildDataItems(Guid parentId, string itemType, string provider, string sortExpression, int skip, int take, string filter)
         {
-            var request = new RestRequest(this.ServiceUrl + "/parent/{parentId}/?provider={provider}&itemType={itemType}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/parent/{parentId}/?provider={provider}&itemType={itemType}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}"), Method.GET);
 
             request.AddUrlSegment("parentId", parentId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -188,7 +188,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebGet(UriTemplate = "children/{parentId}/?provider={provider}&filter={filter}&itemType={itemType}")]
         public CollectionContext<DynamicContent> GetChildItems(Guid parentId, string provider, string filter, string itemType)
         {
-            var request = new RestRequest(this.ServiceUrl + "children/{parentId}/?provider={provider}&filter={filter}&itemType={itemType}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("children/{parentId}/?provider={provider}&filter={filter}&itemType={itemType}"), Method.GET);
 
             request.AddUrlSegment("parentId", parentId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -201,7 +201,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebGet(UriTemplate = "/{itemId}/?provider={providerName}&itemType={itemType}&version={version}&duplicate={duplicate}&checkOut={checkOut}")]
         public DynamicItemContext GetDataItem(Guid itemId, string providerName, string version, string itemType, bool duplicate, bool checkOut = false)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{itemId}/?provider={providerName}&itemType={itemType}&version={version}&duplicate={duplicate}&checkOut={checkOut}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/{itemId}/?provider={providerName}&itemType={itemType}&version={version}&duplicate={duplicate}&checkOut={checkOut}"), Method.GET);
 
             request.AddUrlSegment("itemId", itemId.ToString());
             request.AddUrlSegment("providerName", providerName);
@@ -216,7 +216,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebGet(UriTemplate = "/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&itemType={itemType}&hierarchyMode={hierarchyMode}")]
         public CollectionContext<DynamicContent> GetDataItems(string provider, string sortExpression, int skip, int take, string filter, string itemType, bool hierarchyMode = false)
         {
-            var request = new RestRequest(this.ServiceUrl + "/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&itemType={itemType}&hierarchyMode={hierarchyMode}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&itemType={itemType}&hierarchyMode={hierarchyMode}"), Method.GET);
 
             request.AddUrlSegment("provider", provider);
             request.AddUrlSegment("sortExpression", sortExpression);
@@ -232,7 +232,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebInvoke(Method = "POST", UriTemplate = "tree/?provider={provider}&childLimit={childLimit}&perLevelLimit={perLevelLimit}&perSubtreeLimit={perSubtreeLimit}&subtreesLimit={subtreesLimit}&root={root}&itemType={itemType}&filter={filter}")]
         public CollectionContext<DynamicContent> GetItemsAsTree(Guid[] leafIds, string provider, int childLimit, int perLevelLimit, int perSubtreeLimit, int subtreesLimit, string root, string itemType, string filter)
         {
-            var request = new RestRequest(this.ServiceUrl + "tree/?provider={provider}&childLimit={childLimit}&perLevelLimit={perLevelLimit}&perSubtreeLimit={perSubtreeLimit}&subtreesLimit={subtreesLimit}&root={root}&itemType={itemType}&filter={filter}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("tree/?provider={provider}&childLimit={childLimit}&perLevelLimit={perLevelLimit}&perSubtreeLimit={perSubtreeLimit}&subtreesLimit={subtreesLimit}&root={root}&itemType={itemType}&filter={filter}"), Method.POST);
 
             request.AddUrlSegment("provider", provider);
             request.AddUrlSegment("childLimit", childLimit.ToString());
@@ -251,7 +251,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebGet(UriTemplate = "/live/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&itemType={itemType}&radius={radius}&latitude={latitude}&longitude={longitude}&geoLocationProperty={geoLocationProperty}")]
         public CollectionContext<DynamicContent> GetLiveDataItems(string provider, string sortExpression, int skip, int take, string filter, string itemType, double latitude = 0, double longitude = 0, double radius = 0, string geoLocationProperty = null)
         {
-            var request = new RestRequest(this.ServiceUrl + "/live/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&itemType={itemType}&radius={radius}&latitude={latitude}&longitude={longitude}&geoLocationProperty={geoLocationProperty}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/live/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&itemType={itemType}&radius={radius}&latitude={latitude}&longitude={longitude}&geoLocationProperty={geoLocationProperty}"), Method.GET);
 
             request.AddUrlSegment("provider", provider);
             request.AddUrlSegment("sortExpression", sortExpression);
@@ -270,7 +270,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebGet(UriTemplate = "predecessor/{itemId}/?provider={providerName}&itemType={itemType}&filter={filter}")]
         public CollectionContext<DynamicContent> GetPredecessorItems(Guid itemId, string itemType, string providerName, string filter)
         {
-            var request = new RestRequest(this.ServiceUrl + "predecessor/{itemId}/?provider={providerName}&itemType={itemType}&filter={filter}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("predecessor/{itemId}/?provider={providerName}&itemType={itemType}&filter={filter}"), Method.GET);
 
             request.AddUrlSegment("itemId", itemId.ToString());
             request.AddUrlSegment("providerName", providerName);
@@ -283,7 +283,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebInvoke(Method = "PUT", UriTemplate = "/parent/{parentId}/{dataItemId}/?provider={provider}&itemType={itemType}&workflowOperation={workflowOperation}&parentType={parentType}&newParentId={newParentId}")]
         public DynamicItemContext SaveChildDataItem(DynamicItemContext dataItem, Guid parentId, Guid dataItemId, string provider, string itemType, string workflowOperation, string parentType, Guid newParentId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/parent/{parentId}/{dataItemId}/?provider={provider}&itemType={itemType}&workflowOperation={workflowOperation}&parentType={parentType}&newParentId={newParentId}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/parent/{parentId}/{dataItemId}/?provider={provider}&itemType={itemType}&workflowOperation={workflowOperation}&parentType={parentType}&newParentId={newParentId}"), Method.PUT);
 
             request.AddUrlSegment("parentId", parentId.ToString());
             request.AddUrlSegment("dataItemId", dataItemId.ToString());
@@ -301,7 +301,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.DynamicModules
         //[WebInvoke(Method = "PUT", UriTemplate = "/{dataItemId}/?provider={provider}&itemType={itemType}&workflowOperation={workflowOperation}")]
         public DynamicItemContext SaveDataItem(DynamicItemContext dataItem, Guid dataItemId, string provider, string itemType, string workflowOperation)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{dataItemId}/?provider={provider}&itemType={itemType}&workflowOperation={workflowOperation}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/{dataItemId}/?provider={provider}&itemType={itemType}&workflowOperation={workflowOperation}"), Method.PUT);
 
             request.AddUrlSegment("dataItemId", dataItemId.ToString());
             request.AddUrlSegment("provider", provider);

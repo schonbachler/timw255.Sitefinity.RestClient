@@ -20,7 +20,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.UserProfiles
         //[WebInvoke(Method = "POST", UriTemplate = "batch/?providerName={providerName}")]
         public bool BatchDeleteUserProfileTypes(Guid[] Ids, string providerName)
         {
-            var request = new RestRequest(this.ServiceUrl + "batch/?providerName={providerName}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("batch/?providerName={providerName}"), Method.POST);
 
             request.AddUrlSegment("providerName", providerName);
 
@@ -32,7 +32,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.UserProfiles
         //[WebInvoke(Method = "DELETE", UriTemplate = "{profileTypeId}/?providerName={providerName}")]
         public bool DeleteUserProfileType(Guid profileTypeId, string providerName)
         {
-            var request = new RestRequest(this.ServiceUrl + "{profileTypeId}/?providerName={providerName}", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("{profileTypeId}/?providerName={providerName}"), Method.DELETE);
 
             request.AddUrlSegment("profileTypeId", profileTypeId.ToString());
             request.AddUrlSegment("providerName", providerName);
@@ -43,7 +43,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.UserProfiles
         //[WebGet(UriTemplate = "/{userId}")]
         public string GetAllProfilesForUser(Guid userId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{userId}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/{userId}"), Method.GET);
 
             request.AddUrlSegment("userId", userId.ToString());
 
@@ -53,7 +53,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.UserProfiles
         //[WebGet(UriTemplate = "{profileTypeId}/?providerName={providerName}&duplicate={duplicate}")]
         public UserProfileTypeContext GetUserProfileType(Guid profileTypeId, string providerName, bool duplicate)
         {
-            var request = new RestRequest(this.ServiceUrl + "{profileTypeId}/?providerName={providerName}&duplicate={duplicate}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("{profileTypeId}/?providerName={providerName}&duplicate={duplicate}"), Method.GET);
 
             request.AddUrlSegment("profileTypeId", profileTypeId.ToString());
             request.AddUrlSegment("providerName", providerName);
@@ -65,7 +65,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.UserProfiles
         //[WebGet(UriTemplate = "?userProfilesFilter={userProfilesFilter}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&root={root}")]
         public CollectionContext<UserProfileTypeViewModel> GetUserProfileTypes(string userProfilesFilter, string sortExpression, int skip, int take, string filter, string root)
         {
-            var request = new RestRequest(this.ServiceUrl + "?userProfilesFilter={userProfilesFilter}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&root={root}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("?userProfilesFilter={userProfilesFilter}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&root={root}"), Method.GET);
 
             request.AddUrlSegment("userProfilesFilter", userProfilesFilter);
             request.AddUrlSegment("sortExpression", sortExpression);
@@ -80,7 +80,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.UserProfiles
         //[WebInvoke(Method = "PUT", UriTemplate = "{userId}")]
         public string SaveAllProfilesForUser(string profileData, Guid userId)
         {
-            var request = new RestRequest(this.ServiceUrl + "{userId}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("{userId}"), Method.PUT);
 
             request.AddUrlSegment("userId", userId.ToString());
 
@@ -92,7 +92,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.UserProfiles
         //[WebInvoke(Method = "PUT", UriTemplate = "{profileTypeId}/?providerName={providerName}&duplicate={duplicate}")]
         public UserProfileTypeContext SaveUserProfileType(UserProfileTypeContext profileTypeDataContext, Guid profileTypeId, string providerName, bool duplicate)
         {
-            var request = new RestRequest(this.ServiceUrl + "{profileTypeId}/?providerName={providerName}&duplicate={duplicate}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("{profileTypeId}/?providerName={providerName}&duplicate={duplicate}"), Method.PUT);
 
             request.AddUrlSegment("profileTypeId", profileTypeId.ToString());
             request.AddUrlSegment("providerName", providerName);

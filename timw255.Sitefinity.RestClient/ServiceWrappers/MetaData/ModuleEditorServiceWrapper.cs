@@ -20,7 +20,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.MetaData
         //[WebInvoke(Method = "PUT", UriTemplate = "applyChanges/?providerName={providerName}")]
         public void ApplyChanges(ModuleEditorContext context, string providerName)
         {
-            var request = new RestRequest(this.ServiceUrl + "applyChanges/?providerName={providerName}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("applyChanges/?providerName={providerName}"), Method.PUT);
 
             request.AddUrlSegment("providerName", providerName);
 
@@ -32,7 +32,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.MetaData
         //[WebGet(UriTemplate = "custom/?contentType={contentType}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&provider={provider}")]
         public CollectionContext<FieldViewModel> GetCustomFields(string contentType, string sortExpression, int skip, int take, string filter, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "custom/?contentType={contentType}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&provider={provider}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("custom/?contentType={contentType}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&provider={provider}"), Method.GET);
 
             request.AddUrlSegment("contentType", contentType);
             request.AddUrlSegment("sortExpression", sortExpression);
@@ -47,7 +47,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.MetaData
         //[WebGet(UriTemplate = "default/?contentType={contentType}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}")]
         public CollectionContext<FieldViewModel> GetDefaultFields(string contentType, string sortExpression, int skip, int take, string filter)
         {
-            var request = new RestRequest(this.ServiceUrl + "default/?contentType={contentType}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("default/?contentType={contentType}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}"), Method.GET);
 
             request.AddUrlSegment("contentType", contentType);
             request.AddUrlSegment("sortExpression", sortExpression);
@@ -61,7 +61,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.MetaData
         //[WebGet(UriTemplate = "views/?itemType={itemType}")]
         public CollectionContext<WcfDetailFormViewData> GetDetailFormViewNames(string itemType)
         {
-            var request = new RestRequest(this.ServiceUrl + "views/?itemType={itemType}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("views/?itemType={itemType}"), Method.GET);
 
             request.AddUrlSegment("itemType", itemType);
 

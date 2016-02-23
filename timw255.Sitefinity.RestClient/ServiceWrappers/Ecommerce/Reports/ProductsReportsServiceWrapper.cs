@@ -19,7 +19,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Reports
         //[WebGet(UriTemplate = "inventoryreport/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&specificProductType={specificProductType}")]
         public CollectionContext<InventoryReportViewModel> GetInventoryReport(string provider, string sortExpression, int skip, int take, string filter, string specificProductType)
         {
-            var request = new RestRequest(this.ServiceUrl + "inventoryreport/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&specificProductType={specificProductType}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("inventoryreport/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&specificProductType={specificProductType}"), Method.GET);
 
             request.AddUrlSegment("provider", provider);
             request.AddUrlSegment("sortExpression", sortExpression);
@@ -34,7 +34,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Reports
         //[WebGet(UriTemplate = "topsellingreport/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&fromDate={fromDate}&toDate={toDate}")]
         public CollectionContext<TopSellingReportViewModel> GetTopSellingReport(string provider, string sortExpression, int skip, int take, string filter, DateTime fromDate, DateTime toDate)
         {
-            var request = new RestRequest(this.ServiceUrl + "topsellingreport/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&fromDate={fromDate}&toDate={toDate}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("topsellingreport/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&fromDate={fromDate}&toDate={toDate}"), Method.GET);
 
             request.AddUrlSegment("provider", provider);
             request.AddUrlSegment("sortExpression", sortExpression);

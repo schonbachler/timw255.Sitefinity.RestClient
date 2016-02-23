@@ -20,7 +20,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebInvoke(Method = "POST", UriTemplate = "/pop3test/")]
         public string TestPop3Server(Pop3SettingsViewModel settings)
         {
-            var request = new RestRequest(this.ServiceUrl + "/pop3test/", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/pop3test/"), Method.POST);
 
             request.AddParameter("application/json", SerializeObject(settings), ParameterType.RequestBody);
 
@@ -30,7 +30,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebInvoke(Method = "POST", UriTemplate = "/smtptest/")]
         public string TestSmtpServer(SmtpSettingsViewModel settings)
         {
-            var request = new RestRequest(this.ServiceUrl + "/smtptest/", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/smtptest/"), Method.POST);
 
             request.AddParameter("application/json", SerializeObject(settings), ParameterType.RequestBody);
 

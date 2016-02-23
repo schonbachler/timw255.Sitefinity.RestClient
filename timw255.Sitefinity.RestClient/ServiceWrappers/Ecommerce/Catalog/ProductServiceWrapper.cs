@@ -19,7 +19,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Catalog
         //[WebInvoke(Method = "POST", UriTemplate = "/batch/?provider={provider}&language={deletedLanguage}")]
         public bool BatchDeleteProducts(Guid[] productIds, string provider, string deletedLanguage)
         {
-            var request = new RestRequest(this.ServiceUrl + "/batch/?provider={provider}&language={deletedLanguage}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/batch/?provider={provider}&language={deletedLanguage}"), Method.POST);
 
             request.AddUrlSegment("provider", provider);
             request.AddUrlSegment("deletedLanguage", deletedLanguage);
@@ -32,7 +32,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Catalog
         //[WebInvoke(Method = "PUT", UriTemplate = "batch/publish/?provider={providerName}&workflowOperation={workflowOperation}")]
         public bool BatchPublishProducts(Guid[] ids, string providerName, string workflowOperation)
         {
-            var request = new RestRequest(this.ServiceUrl + "batch/publish/?provider={providerName}&workflowOperation={workflowOperation}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("batch/publish/?provider={providerName}&workflowOperation={workflowOperation}"), Method.PUT);
 
             request.AddUrlSegment("providerName", providerName);
             request.AddUrlSegment("workflowOperation", workflowOperation);
@@ -45,7 +45,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Catalog
         //[WebInvoke(Method = "PUT", UriTemplate = "batch/unpublish/?provider={providerName}&workflowOperation={workflowOperation}")]
         public bool BatchUnpublishProducts(Guid[] ids, string providerName, string workflowOperation)
         {
-            var request = new RestRequest(this.ServiceUrl + "batch/unpublish/?provider={providerName}&workflowOperation={workflowOperation}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("batch/unpublish/?provider={providerName}&workflowOperation={workflowOperation}"), Method.PUT);
 
             request.AddUrlSegment("providerName", providerName);
             request.AddUrlSegment("workflowOperation", workflowOperation);
@@ -58,7 +58,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Catalog
         //[WebInvoke(Method = "DELETE", UriTemplate = "/{productId}/?provider={provider}&language={deletedLanguage}")]
         public bool DeleteProduct(Guid productId, string provider, string deletedLanguage)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{productId}/?provider={provider}&language={deletedLanguage}", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("/{productId}/?provider={provider}&language={deletedLanguage}"), Method.DELETE);
 
             request.AddUrlSegment("productId", productId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -70,7 +70,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Catalog
         //[WebInvoke(Method = "DELETE", UriTemplate = "/temp/{productId}/?provider={providerName}&force={force}&workflowOperation={workflowOperation}")]
         public bool DeleteTemp(Guid productId, string providerName, bool force, string workflowOperation)
         {
-            var request = new RestRequest(this.ServiceUrl + "/temp/{productId}/?provider={providerName}&force={force}&workflowOperation={workflowOperation}", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("/temp/{productId}/?provider={providerName}&force={force}&workflowOperation={workflowOperation}"), Method.DELETE);
 
             request.AddUrlSegment("productId", productId.ToString());
             request.AddUrlSegment("providerName", providerName);
@@ -83,7 +83,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Catalog
         //[WebGet(UriTemplate = "/{productId}/?providerName={providerName}&checkOut={checkOut}")]
         public ContentItemContext<Product> GetProduct(Guid productId, string providerName, bool checkOut)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{productId}/?providerName={providerName}&checkOut={checkOut}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/{productId}/?providerName={providerName}&checkOut={checkOut}"), Method.GET);
 
             request.AddUrlSegment("productId", productId.ToString());
             request.AddUrlSegment("providerName", providerName);
@@ -95,7 +95,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Catalog
         //[WebGet(UriTemplate = "/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&specificProductType={specificProductType}&otherFilters={otherFilters}")]
         public CollectionContext<ProductViewModel> GetProducts(string provider, string sortExpression, int skip, int take, string filter, string specificProductType, string otherFilters)
         {
-            var request = new RestRequest(this.ServiceUrl + "/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&specificProductType={specificProductType}&otherFilters={otherFilters}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&specificProductType={specificProductType}&otherFilters={otherFilters}"), Method.GET);
 
             request.AddUrlSegment("provider", provider);
             request.AddUrlSegment("sortExpression", sortExpression);
@@ -111,7 +111,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Catalog
         //[WebInvoke(Method = "PUT", UriTemplate = "/{productId}/?provider={provider}&itemType={itemType}&workflowOperation={workflowOperation}")]
         public ContentItemContext<Product> SaveProduct(Guid productId, string serializedProduct, string provider, string itemType, string workflowOperation)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{productId}/?provider={provider}&itemType={itemType}&workflowOperation={workflowOperation}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/{productId}/?provider={provider}&itemType={itemType}&workflowOperation={workflowOperation}"), Method.PUT);
 
             request.AddUrlSegment("productId", productId.ToString());
             request.AddUrlSegment("provider", provider);

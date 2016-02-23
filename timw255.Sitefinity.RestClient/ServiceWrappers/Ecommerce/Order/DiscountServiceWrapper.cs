@@ -19,7 +19,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Order
         //[WebInvoke(Method = "POST", UriTemplate = "/batch/?provider={provider}&language={deletedLanguage}")]
         public bool BatchDeleteDiscounts(Guid[] discountIds, string provider, string deletedLanguage)
         {
-            var request = new RestRequest(this.ServiceUrl + "/batch/?provider={provider}&language={deletedLanguage}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/batch/?provider={provider}&language={deletedLanguage}"), Method.POST);
 
             request.AddUrlSegment("provider", provider);
             request.AddUrlSegment("deletedLanguage", deletedLanguage);
@@ -32,7 +32,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Order
         //[WebInvoke(Method = "DELETE", UriTemplate = "/{discountId}/?provider={provider}&language={deletedLanguage}")]
         public bool DeleteDiscount(Guid discountId, string provider, string deletedLanguage)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{discountId}/?provider={provider}&language={deletedLanguage}", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("/{discountId}/?provider={provider}&language={deletedLanguage}"), Method.DELETE);
 
             request.AddUrlSegment("discountId", discountId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -44,7 +44,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Order
         //[WebGet(UriTemplate = "/{discountId}/?provider={provider}")]
         public ItemContext<Discount> GetDiscount(Guid discountId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{discountId}/?provider={provider}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/{discountId}/?provider={provider}"), Method.GET);
 
             request.AddUrlSegment("discountId", discountId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -55,7 +55,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Order
         //[WebGet(UriTemplate = "/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}")]
         public CollectionContext<Discount> GetDiscounts(string provider, string sortExpression, int skip, int take, string filter)
         {
-            var request = new RestRequest(this.ServiceUrl + "/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}"), Method.GET);
 
             request.AddUrlSegment("provider", provider);
             request.AddUrlSegment("sortExpression", sortExpression);
@@ -69,7 +69,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Order
         //[WebInvoke(Method = "POST", UriTemplate = "/makeactive/?provider={provider}")]
         public bool MakeActive(Guid discountId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/makeactive/?provider={provider}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/makeactive/?provider={provider}"), Method.POST);
 
             request.AddUrlSegment("provider", provider);
 
@@ -81,7 +81,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Order
         //[WebInvoke(Method = "POST", UriTemplate = "/makeinactive/?provider={provider}")]
         public bool MakeInActive(Guid discountId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/makeinactive/?provider={provider}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/makeinactive/?provider={provider}"), Method.POST);
 
             request.AddUrlSegment("provider", provider);
 
@@ -93,7 +93,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Order
         //[WebInvoke(Method = "PUT", UriTemplate = "/{discountId}/?provider={provider}")]
         public ItemContext<Discount> SaveDiscount(Guid discountId, ItemContext<Discount> discount, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{discountId}/?provider={provider}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/{discountId}/?provider={provider}"), Method.PUT);
 
             request.AddUrlSegment("discountId", discountId.ToString());
             request.AddUrlSegment("provider", provider);

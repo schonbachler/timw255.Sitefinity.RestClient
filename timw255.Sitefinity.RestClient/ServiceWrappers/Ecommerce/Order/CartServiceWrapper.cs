@@ -19,7 +19,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Order
         //[WebInvoke(Method = "DELETE", UriTemplate = "/clear")]
         public void ClearCart(string providerName)
         {
-            var request = new RestRequest(this.ServiceUrl + "/clear", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("/clear"), Method.DELETE);
 
             ExecuteRequest(request);
         }
@@ -27,7 +27,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Order
         //[WebInvoke(Method = "GET", UriTemplate = "/?orderId={cartOrderId}&provider={providerName}")]
         public ItemContext<CartOrder> GetCart(Guid cartOrderId, string providerName)
         {
-            var request = new RestRequest(this.ServiceUrl + "/?orderId={cartOrderId}&provider={providerName}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/?orderId={cartOrderId}&provider={providerName}"), Method.GET);
 
             request.AddUrlSegment("cartOrderId", cartOrderId.ToString());
             request.AddUrlSegment("providerName", providerName);
@@ -38,7 +38,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Order
         //[WebInvoke(Method = "GET", UriTemplate = "/?orderId={cartOrderId}&provider={providerName}")]
         public ItemContext<CartOrder> GetCart(string providerName)
         {
-            var request = new RestRequest(this.ServiceUrl + "/?orderId={cartOrderId}&provider={providerName}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/?orderId={cartOrderId}&provider={providerName}"), Method.GET);
 
             request.AddUrlSegment("cartOrderId", String.Empty);
             request.AddUrlSegment("providerName", providerName);
@@ -49,7 +49,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Order
         //[WebInvoke(Method = "DELETE", UriTemplate = "/?cartDetailId={cartDetailId}&provider={providerName}")]
         public void RemoveFromCart(Guid cartDetailId, string providerName)
         {
-            var request = new RestRequest(this.ServiceUrl + "/?cartDetailId={cartDetailId}&provider={providerName}", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("/?cartDetailId={cartDetailId}&provider={providerName}"), Method.DELETE);
 
             request.AddUrlSegment("cartDetailId", cartDetailId.ToString());
             request.AddUrlSegment("providerName", providerName);
@@ -60,7 +60,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Order
         //[WebInvoke(Method = "POST", UriTemplate = "/?cartDetailId={cartDetailId}&qty={quantity}&provider={providerName}")]
         public void UpdateQuantity(Guid cartDetailId, int quantity, string providerName)
         {
-            var request = new RestRequest(this.ServiceUrl + "/?cartDetailId={cartDetailId}&qty={quantity}&provider={providerName}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/?cartDetailId={cartDetailId}&qty={quantity}&provider={providerName}"), Method.POST);
 
             request.AddUrlSegment("cartDetailId", cartDetailId.ToString());
             request.AddUrlSegment("quantity", quantity.ToString());

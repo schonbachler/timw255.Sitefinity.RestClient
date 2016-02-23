@@ -20,7 +20,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebInvoke(Method = "POST", UriTemplate = "/batchdelete/?provider={provider}")]
         public bool BatchDeleteTemplates(Guid[] templateIds, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/batchdelete/?provider={provider}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/batchdelete/?provider={provider}"), Method.POST);
 
             request.AddUrlSegment("provider", provider);
 
@@ -32,7 +32,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebInvoke(Method = "DELETE", UriTemplate = "/{templateId}/?provider={provider}")]
         public bool DeleteTemplate(Guid templateId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{templateId}/?provider={provider}", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("/{templateId}/?provider={provider}"), Method.DELETE);
 
             request.AddUrlSegment("templateId", templateId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -43,7 +43,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebGet(UriTemplate = "/{templateId}/?provider={provider}")]
         public MessageBodyViewModel GetTemplate(Guid templateId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{templateId}/?provider={provider}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/{templateId}/?provider={provider}"), Method.GET);
 
             request.AddUrlSegment("templateId", templateId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -54,7 +54,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebGet(UriTemplate = "/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}")]
         public CollectionContext<MessageBodyViewModel> GetTemplates(string provider, string sortExpression, int skip, int take, string filter)
         {
-            var request = new RestRequest(this.ServiceUrl + "/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}"), Method.GET);
 
             request.AddUrlSegment("provider", provider);
             request.AddUrlSegment("sortExpression", sortExpression);
@@ -68,7 +68,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebInvoke(Method = "PUT", UriTemplate = "/{templateId}/?provider={provider}&isPageBased={isPageBased}")]
         public MessageBodyViewModel SaveTemplate(Guid templateId, MessageBodyViewModel template, string provider, bool isPageBased)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{templateId}/?provider={provider}&isPageBased={isPageBased}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/{templateId}/?provider={provider}&isPageBased={isPageBased}"), Method.PUT);
 
             request.AddUrlSegment("templateId", templateId.ToString());
             request.AddUrlSegment("provider", provider);

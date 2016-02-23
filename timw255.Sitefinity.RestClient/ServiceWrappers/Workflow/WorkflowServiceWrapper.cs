@@ -20,7 +20,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Workflow
         //[WebGet(UriTemplate = "/{itemId}/?itemType={itemType}&providerName={providerName}&itemCulture={itemCulture}&showMoreActions={showMoreActions}")]
         public WorkflowVisualElementsCollection GetWorkflowVisualElements(string itemType, string providerName, Guid itemId, string itemCulture, bool showMoreActions = true)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{itemId}/?itemType={itemType}&providerName={providerName}&itemCulture={itemCulture}&showMoreActions={showMoreActions}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/{itemId}/?itemType={itemType}&providerName={providerName}&itemCulture={itemCulture}&showMoreActions={showMoreActions}"), Method.GET);
 
             request.AddUrlSegment("itemId", itemId.ToString());
             request.AddUrlSegment("itemType", itemType);
@@ -34,7 +34,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Workflow
         //[WebInvoke(Method = "PUT", UriTemplate = "/MessageWorkflow/{itemId}/?itemType={itemType}&providerName={providerName}&workflowOperation={workflowOperation}")]
         public string MessageWorkflow(KeyValuePair<string, string>[] contextBag, Guid itemId, string itemType, string providerName, string workflowOperation)
         {
-            var request = new RestRequest(this.ServiceUrl + "/MessageWorkflow/{itemId}/?itemType={itemType}&providerName={providerName}&workflowOperation={workflowOperation}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/MessageWorkflow/{itemId}/?itemType={itemType}&providerName={providerName}&workflowOperation={workflowOperation}"), Method.PUT);
 
             request.AddUrlSegment("itemId", itemId.ToString());
             request.AddUrlSegment("itemType", itemType);

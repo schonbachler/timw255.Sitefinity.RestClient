@@ -19,7 +19,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Common
         //[WebInvoke(Method = "PUT", UriTemplate = "/blockemail/{email}/?provider={providerName}&managerType={managerType}")]
         public void BlockCommentsForEmail(string email, string providerName, string managerType)
         {
-            var request = new RestRequest(this.ServiceUrl + "/blockemail/{email}/?provider={providerName}&managerType={managerType}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/blockemail/{email}/?provider={providerName}&managerType={managerType}"), Method.PUT);
 
             request.AddUrlSegment("email", email);
             request.AddUrlSegment("providerName", providerName);
@@ -31,7 +31,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Common
         //[WebInvoke(Method = "PUT", UriTemplate = "/blockip/{ip}/?provider={providerName}&managerType={managerType}")]
         public void BlockCommentsForIp(string ip, string providerName, string managerType)
         {
-            var request = new RestRequest(this.ServiceUrl + "/blockip/{ip}/?provider={providerName}&managerType={managerType}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/blockip/{ip}/?provider={providerName}&managerType={managerType}"), Method.PUT);
 
             request.AddUrlSegment("ip", ip);
             request.AddUrlSegment("providerName", providerName);
@@ -43,7 +43,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Common
         //[WebInvoke(Method = "PUT", UriTemplate = "/hide/{commentId}/?provider={providerName}&managerType={managerType}")]
         public void HideComment(Guid commentId, string providerName, string managerType)
         {
-            var request = new RestRequest(this.ServiceUrl + "/hide/{commentId}/?provider={providerName}&managerType={managerType}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/hide/{commentId}/?provider={providerName}&managerType={managerType}"), Method.PUT);
 
             request.AddUrlSegment("commentId", commentId.ToString());
             request.AddUrlSegment("providerName", providerName);
@@ -55,7 +55,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Common
         //[WebInvoke(Method = "PUT", UriTemplate = "/spam/{commentId}/?provider={providerName}&managerType={managerType}")]
         public void MarkCommentAsSpam(Guid commentId, string providerName, string managerType)
         {
-            var request = new RestRequest(this.ServiceUrl + "/spam/{commentId}/?provider={providerName}&managerType={managerType}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/spam/{commentId}/?provider={providerName}&managerType={managerType}"), Method.PUT);
 
             request.AddUrlSegment("commentId", commentId.ToString());
             request.AddUrlSegment("providerName", providerName);
@@ -67,7 +67,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Common
         //[WebInvoke(Method = "PUT", UriTemplate = "/publish/{commentId}/?provider={providerName}&managerType={managerType}")]
         public void PublishComment(Guid commentId, string providerName, string managerType)
         {
-            var request = new RestRequest(this.ServiceUrl + "/publish/{commentId}/?provider={providerName}&managerType={managerType}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/publish/{commentId}/?provider={providerName}&managerType={managerType}"), Method.PUT);
 
             request.AddUrlSegment("commentId", commentId.ToString());
             request.AddUrlSegment("providerName", providerName);

@@ -20,7 +20,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Workflow
         //[WebInvoke(Method = "POST", UriTemplate = "/batch/?provider={provider}")]
         public void DeleteWorkflowDefinitions(Guid[] workflowDefinitionIds, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/batch/?provider={provider}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/batch/?provider={provider}"), Method.POST);
 
             request.AddUrlSegment("provider", provider);
 
@@ -32,7 +32,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Workflow
         //[WebGet(UriTemplate = "/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&workflowFilter={workflowFilter}")]
         public CollectionContext<WorkflowDefinitionViewModel> GetWorkflowDefinitions(string provider, string sortExpression, int skip, int take, string filter, string workflowFilter)
         {
-            var request = new RestRequest(this.ServiceUrl + "/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&workflowFilter={workflowFilter}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&workflowFilter={workflowFilter}"), Method.GET);
 
             request.AddUrlSegment("provider", provider);
             request.AddUrlSegment("sortExpression", sortExpression);
@@ -47,7 +47,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Workflow
         //[WebInvoke(Method = "PUT", UriTemplate = "/{workflowDefinitionId}/?provider={provider}")]
         public WorkflowDefinitionViewModel SaveWorkflowDefinition(WorkflowDefinitionViewModel workflowDefinitionViewModel, Guid workflowDefinitionId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{workflowDefinitionId}/?provider={provider}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/{workflowDefinitionId}/?provider={provider}"), Method.PUT);
 
             request.AddUrlSegment("workflowDefinitionId", workflowDefinitionId.ToString());
             request.AddUrlSegment("provider", provider);

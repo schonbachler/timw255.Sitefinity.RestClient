@@ -18,7 +18,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Catalog
         //[WebInvoke(Method = "POST", UriTemplate = "Set/SortOrder/{attributeId}/{sortOrder}/", ResponseFormat = WebMessageFormat.Xml)]
         public void SetListSortOrder(Guid attributeId, string sortOrder)
         {
-            var request = new RestRequest(this.ServiceUrl + "Set/SortOrder/{attributeId}/{sortOrder}/", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("Set/SortOrder/{attributeId}/{sortOrder}/"), Method.POST);
 
             request.AddUrlSegment("attributeId", attributeId.ToString());
             request.AddUrlSegment("sortOrder", sortOrder);

@@ -19,7 +19,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Order
         //[WebInvoke(Method = "POST", UriTemplate = "/batch/?provider={provider}")]
         public bool BatchDeleteOrders(Guid[] orderIds, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/batch/?provider={provider}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/batch/?provider={provider}"), Method.POST);
 
             request.AddUrlSegment("provider", provider);
 
@@ -31,7 +31,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Order
         //[WebInvoke(Method = "DELETE", UriTemplate = "/{orderId}/?provider={provider}")]
         public bool DeleteOrder(Guid orderId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{orderId}/?provider={provider}", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("/{orderId}/?provider={provider}"), Method.DELETE);
 
             request.AddUrlSegment("orderId", orderId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -42,7 +42,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Order
         //[WebGet(UriTemplate = "/{orderId}/?provider={provider}")]
         public ItemContext<timw255.Sitefinity.RestClient.Model.Order> GetOrder(Guid orderId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{orderId}/?provider={provider}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/{orderId}/?provider={provider}"), Method.GET);
 
             request.AddUrlSegment("orderId", orderId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -53,7 +53,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Order
         //[WebGet(UriTemplate = "/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&status={status}")]
         public CollectionContext<timw255.Sitefinity.RestClient.Model.Order> GetOrders(string provider, string sortExpression, int skip, int take, string filter, int status)
         {
-            var request = new RestRequest(this.ServiceUrl + "/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&status={status}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&status={status}"), Method.GET);
 
             request.AddUrlSegment("provider", provider);
             request.AddUrlSegment("sortExpression", sortExpression);
@@ -68,7 +68,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Order
         //[WebInvoke(Method = "POST", UriTemplate = "/markaspaid/?provider={provider}")]
         public bool MarkAsPaid(Guid orderId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/markaspaid/?provider={provider}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/markaspaid/?provider={provider}"), Method.POST);
 
             request.AddUrlSegment("provider", provider);
 
@@ -80,7 +80,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Order
         //[WebInvoke(Method = "POST", UriTemplate = "/markasshipped/?provider={provider}")]
         public bool MarkAsShipped(Guid orderId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/markasshipped/?provider={provider}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/markasshipped/?provider={provider}"), Method.POST);
 
             request.AddUrlSegment("provider", provider);
 

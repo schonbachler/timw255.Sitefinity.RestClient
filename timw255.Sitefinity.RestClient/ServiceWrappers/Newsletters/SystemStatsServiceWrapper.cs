@@ -20,7 +20,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebInvoke(Method = "GET", UriTemplate = "/?provider={provider}")]
         public SystemStats GetStats(string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/?provider={provider}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/?provider={provider}"), Method.GET);
 
             request.AddUrlSegment("provider", provider);
 

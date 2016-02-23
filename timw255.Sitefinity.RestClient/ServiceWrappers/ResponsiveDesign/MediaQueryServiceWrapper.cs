@@ -20,7 +20,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.ResponsiveDesign
         //[WebInvoke(Method = "POST", UriTemplate = "/batch/?provider={provider}")]
         public bool BatchDeleteMediaQueries(Guid[] mediaQueryIds, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/batch/?provider={provider}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/batch/?provider={provider}"), Method.POST);
 
             request.AddUrlSegment("provider", provider);
 
@@ -32,7 +32,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.ResponsiveDesign
         //[WebInvoke(Method = "DELETE", UriTemplate = "/{mediaQueryId}/?provider={provider}")]
         public bool DeleteMediaQuery(Guid mediaQueryId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{mediaQueryId}/?provider={provider}", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("/{mediaQueryId}/?provider={provider}"), Method.DELETE);
 
             request.AddUrlSegment("mediaQueryId", mediaQueryId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -43,7 +43,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.ResponsiveDesign
         //[WebGet(UriTemplate = "/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}")]
         public CollectionContext<MediaQueryViewModel> GetMediaQueries(string provider, string sortExpression, int skip, int take, string filter)
         {
-            var request = new RestRequest(this.ServiceUrl + "/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}"), Method.GET);
 
             request.AddUrlSegment("provider", provider);
             request.AddUrlSegment("sortExpression", sortExpression);
@@ -57,7 +57,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.ResponsiveDesign
         //[WebGet(UriTemplate = "/{mediaQueryId}/?provider={providerName}")]
         public ItemContext<MediaQueryViewModel> GetMediaQuery(Guid mediaQueryId, string providerName)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{mediaQueryId}/?provider={providerName}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/{mediaQueryId}/?provider={providerName}"), Method.GET);
 
             request.AddUrlSegment("mediaQueryId", mediaQueryId.ToString());
             request.AddUrlSegment("providerName", providerName);
@@ -68,7 +68,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.ResponsiveDesign
         //[WebInvoke(Method = "PUT", UriTemplate = "/{mediaQueryId}/?provider={provider}&itemType={itemType}")]
         public ItemContext<MediaQueryViewModel> SaveMediaQuery(Guid mediaQueryId, ItemContext<MediaQueryViewModel> mediaQuery, string provider, string itemType)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{mediaQueryId}/?provider={provider}&itemType={itemType}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/{mediaQueryId}/?provider={provider}&itemType={itemType}"), Method.PUT);
 
             request.AddUrlSegment("mediaQueryId", mediaQueryId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -82,7 +82,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.ResponsiveDesign
         //[WebInvoke(Method = "PUT", UriTemplate = "/mql/?provider={provider}")]
         public ItemContext<MediaQueryLinkViewModel> SaveMediaQueryLink(ItemContext<MediaQueryLinkViewModel> mediaQueryLink, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/mql/?provider={provider}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/mql/?provider={provider}"), Method.PUT);
 
             request.AddUrlSegment("provider", provider);
 

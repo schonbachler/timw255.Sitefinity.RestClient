@@ -20,7 +20,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.BlobStorage
         //[WebInvoke(Method = "POST", UriTemplate = "providers/batch/")]
         public bool BatchDeleteProviders(string[] providers)
         {
-            var request = new RestRequest(this.ServiceUrl + "providers/batch/", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("providers/batch/"), Method.POST);
 
             request.AddParameter("application/json", SerializeObject(providers), ParameterType.RequestBody);
 
@@ -30,7 +30,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.BlobStorage
         //[WebGet(UriTemplate = "providerstats/?libraryType={libraryType}&provider={provider}")]
         public CollectionContext<WcfBlobStorageProvider> GetBlobStorageProviderStats(string libraryType, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "providerstats/?libraryType={libraryType}&provider={provider}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("providerstats/?libraryType={libraryType}&provider={provider}"), Method.GET);
 
             request.AddUrlSegment("libraryType", libraryType);
             request.AddUrlSegment("provider", provider);
@@ -41,7 +41,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.BlobStorage
         //[WebGet(UriTemplate = "providers/")]
         public CollectionContext<DataProviderSettingsViewModel> GetProviders()
         {
-            var request = new RestRequest(this.ServiceUrl + "providers/", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("providers/"), Method.GET);
 
             return ExecuteRequest<CollectionContext<DataProviderSettingsViewModel>>(request);
         }
@@ -49,7 +49,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.BlobStorage
         //[WebInvoke(Method = "PUT", UriTemplate = "setdefault/")]
         public bool SetDefault(string newDefaultProvider)
         {
-            var request = new RestRequest(this.ServiceUrl + "setdefault/", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("setdefault/"), Method.PUT);
 
             request.AddParameter("application/json", newDefaultProvider, ParameterType.RequestBody);
 

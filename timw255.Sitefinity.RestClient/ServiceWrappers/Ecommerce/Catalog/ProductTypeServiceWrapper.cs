@@ -19,7 +19,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Catalog
         //[WebInvoke(Method = "POST", UriTemplate = "/batch/?provider={provider}&language={deletedLanguage}")]
         public bool BatchDeleteProductTypes(Guid[] productTypeIds, string provider, string deletedLanguage)
         {
-            var request = new RestRequest(this.ServiceUrl + "/batch/?provider={provider}&language={deletedLanguage}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/batch/?provider={provider}&language={deletedLanguage}"), Method.POST);
 
             request.AddUrlSegment("provider", provider);
             request.AddUrlSegment("deletedLanguage", deletedLanguage);
@@ -32,7 +32,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Catalog
         //[WebInvoke(Method = "DELETE", UriTemplate = "/{productTypeId}/?provider={provider}&language={deletedLanguage}")]
         public bool DeleteProductType(Guid productTypeId, string provider, string deletedLanguage)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{productTypeId}/?provider={provider}&language={deletedLanguage}", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("/{productTypeId}/?provider={provider}&language={deletedLanguage}"), Method.DELETE);
 
             request.AddUrlSegment("productTypeId", productTypeId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -44,7 +44,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Catalog
         //[WebGet(UriTemplate = "/{productTypeId}/?provider={provider}")]
         public ItemContext<ProductType> GetProductType(Guid productTypeId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{productTypeId}/?provider={provider}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/{productTypeId}/?provider={provider}"), Method.GET);
 
             request.AddUrlSegment("productTypeId", productTypeId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -55,7 +55,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Catalog
         //[WebGet(UriTemplate = "/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}")]
         public CollectionContext<ProductTypeViewModel> GetProductTypes(string provider, string sortExpression, int skip, int take, string filter)
         {
-            var request = new RestRequest(this.ServiceUrl + "/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}"), Method.GET);
 
             request.AddUrlSegment("provider", provider);
             request.AddUrlSegment("sortExpression", sortExpression);
@@ -69,7 +69,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Catalog
         //[WebInvoke(Method = "PUT", UriTemplate = "/{productTypeId}/?provider={provider}")]
         public ItemContext<ProductType> SaveProductType(Guid productTypeId, ItemContext<ProductType> productType, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{productTypeId}/?provider={provider}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/{productTypeId}/?provider={provider}"), Method.PUT);
 
             request.AddUrlSegment("productTypeId", productTypeId.ToString());
             request.AddUrlSegment("provider", provider);

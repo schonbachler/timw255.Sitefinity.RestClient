@@ -20,7 +20,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebInvoke(Method = "POST", UriTemplate = "/batchdelete/?provider={provider}")]
         public bool BatchDeleteCampaigns(Guid[] campaignIds, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/batchdelete/?provider={provider}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("/batchdelete/?provider={provider}"), Method.POST);
 
             request.AddUrlSegment("provider", provider);
 
@@ -32,7 +32,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebInvoke(Method = "PUT", UriTemplate = "/abtests/{issueAId}/?provider={provider}&isFromScratch={isFromScratch}")]
         public ABCampaignViewModel CreateAbTest(Guid issueAId, bool isFromScratch, IssueViewModel issueB, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/abtests/{issueAId}/?provider={provider}&isFromScratch={isFromScratch}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/abtests/{issueAId}/?provider={provider}&isFromScratch={isFromScratch}"), Method.PUT);
 
             request.AddUrlSegment("issueAId", issueAId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -46,7 +46,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebInvoke(Method = "GET", UriTemplate = "/decidewinner/{abCampaignId}/{winningCampaignId}/?provider={provider}")]
         public bool DecideWinner(Guid abCampaignId, Guid winningCampaignId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/decidewinner/{abCampaignId}/{winningCampaignId}/?provider={provider}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/decidewinner/{abCampaignId}/{winningCampaignId}/?provider={provider}"), Method.GET);
 
             request.AddUrlSegment("abCampaignId", abCampaignId.ToString());
             request.AddUrlSegment("winningCampaignId", winningCampaignId.ToString());
@@ -58,7 +58,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebInvoke(Method = "DELETE", UriTemplate = "/{campaignId}/?provider={provider}")]
         public bool DeleteCampaign(Guid campaignId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{campaignId}/?provider={provider}", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("/{campaignId}/?provider={provider}"), Method.DELETE);
 
             request.AddUrlSegment("campaignId", campaignId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -69,7 +69,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebInvoke(Method = "GET", UriTemplate = "/endtesting/{abCampaignId}/?provider={provider}")]
         public string EndTesting(Guid abCampaignId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/endtesting/{abCampaignId}/?provider={provider}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/endtesting/{abCampaignId}/?provider={provider}"), Method.GET);
 
             request.AddUrlSegment("abCampaignId", abCampaignId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -80,7 +80,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebGet(UriTemplate = "/abtests/{rootCampaignId}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}")]
         public CollectionContext<ABCampaignGridViewModel> GetABTestsPerCampaign(string provider, Guid rootCampaignId, string sortExpression, int skip, int take, string filter)
         {
-            var request = new RestRequest(this.ServiceUrl + "/abtests/{rootCampaignId}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/abtests/{rootCampaignId}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}"), Method.GET);
 
             request.AddUrlSegment("rootCampaignId", rootCampaignId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -95,7 +95,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebGet(UriTemplate = "/{campaignId}/?provider={provider}")]
         public ABCampaignViewModel GetCampaign(Guid campaignId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{campaignId}/?provider={provider}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/{campaignId}/?provider={provider}"), Method.GET);
 
             request.AddUrlSegment("campaignId", campaignId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -106,7 +106,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebGet(UriTemplate = "/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}")]
         public CollectionContext<ABCampaignViewModel> GetCampaigns(string provider, string sortExpression, int skip, int take, string filter)
         {
-            var request = new RestRequest(this.ServiceUrl + "/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}"), Method.GET);
 
             request.AddUrlSegment("provider", provider);
             request.AddUrlSegment("sortExpression", sortExpression);
@@ -120,7 +120,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebInvoke(Method = "PUT", UriTemplate = "/{campaignId}/?provider={provider}")]
         public ABCampaignViewModel SaveCampaign(Guid campaignId, ABCampaignViewModel campaign, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{campaignId}/?provider={provider}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/{campaignId}/?provider={provider}"), Method.PUT);
 
             request.AddUrlSegment("campaignId", campaignId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -133,7 +133,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebInvoke(Method = "PUT", UriTemplate = "/setconclusion/{abTestId}/?provider={provider}")]
         public bool SetConclusion(Guid abTestId, string value, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/setconclusion/{abTestId}/?provider={provider}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/setconclusion/{abTestId}/?provider={provider}"), Method.PUT);
 
             request.AddUrlSegment("abTestId", abTestId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -146,7 +146,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebInvoke(Method = "PUT", UriTemplate = "/settestingnote/{abTestId}/?provider={provider}")]
         public bool SetTestingNote(Guid abTestId, string value, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/settestingnote/{abTestId}/?provider={provider}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/settestingnote/{abTestId}/?provider={provider}"), Method.PUT);
 
             request.AddUrlSegment("abTestId", abTestId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -159,7 +159,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Newsletters
         //[WebInvoke(Method = "GET", UriTemplate = "/starttesting/{abCampaignId}/?provider={provider}")]
         public bool StartTesting(Guid abCampaignId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/starttesting/{abCampaignId}/?provider={provider}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/starttesting/{abCampaignId}/?provider={provider}"), Method.GET);
 
             request.AddUrlSegment("abCampaignId", abCampaignId.ToString());
             request.AddUrlSegment("provider", provider);

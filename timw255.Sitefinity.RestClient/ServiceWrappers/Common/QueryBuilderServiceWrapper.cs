@@ -20,7 +20,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Common
         //[WebInvoke(Method = "PUT", UriTemplate = "/{queryId}/?provider={providerName}")]
         public void CreateOrUpdateQuery(QueryData query, Guid queryId, string providerName)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{queryId}/?provider={providerName}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/{queryId}/?provider={providerName}"), Method.PUT);
 
             request.AddUrlSegment("queryId", queryId.ToString());
             request.AddUrlSegment("providerName", providerName);
@@ -33,7 +33,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Common
         //[WebInvoke(Method = "GET", UriTemplate = "/?sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&provider={providerName}")]
         public QueryCollectionContext GetQueries(string sortExpression, int skip, int take, string filter, string providerName)
         {
-            var request = new RestRequest(this.ServiceUrl + "/?sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&provider={providerName}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/?sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&provider={providerName}"), Method.GET);
 
             request.AddUrlSegment("sortExpression", sortExpression);
             request.AddUrlSegment("skip", skip.ToString());
@@ -47,7 +47,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Common
         //[WebInvoke(Method = "GET", UriTemplate = "/{id}/?provider={providerName}")]
         public QueryData GetQuery(Guid id, string providerName)
         {
-            var request = new RestRequest(this.ServiceUrl + "/{id}/?provider={providerName}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/{id}/?provider={providerName}"), Method.GET);
 
             request.AddUrlSegment("id", id.ToString());
             request.AddUrlSegment("providerName", providerName);
@@ -58,7 +58,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Common
         //[WebInvoke(Method = "PUT", UriTemplate = "", RequestFormat = WebMessageFormat.Json)]
         public string GetQueryExpression(QueryData query)
         {
-            var request = new RestRequest(this.ServiceUrl + "", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl(""), Method.PUT);
 
             request.AddParameter("application/json", SerializeObject(query), ParameterType.RequestBody);
 

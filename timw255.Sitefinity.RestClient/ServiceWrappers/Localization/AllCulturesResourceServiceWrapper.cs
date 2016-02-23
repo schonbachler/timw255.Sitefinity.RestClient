@@ -19,7 +19,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Localization
         //[WebGet(UriTemplate="{classId=null}/{key=null}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}")]
         public CollectionContext<ResourceEntry> GetResources(Guid classId, string key, string provider, string sortExpression, int skip, int take, string filter)
         {
-            var request = new RestRequest(this.ServiceUrl + "{classId}/{key}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("{classId}/{key}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}"), Method.GET);
 
             request.AddUrlSegment("classId", classId.ToString());
             request.AddUrlSegment("key", key);
@@ -35,7 +35,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Localization
         //[WebInvoke(Method="PUT", UriTemplate="{uiCulture}/{classId}/{key}/?provider={provider}")]
         public ResourceEntry SaveResource(string[][] propertyBag, string uiCulture, Guid classId, string key, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "{uiCulture}/{classId}/{key}/?provider={provider}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("{uiCulture}/{classId}/{key}/?provider={provider}"), Method.PUT);
 
             request.AddUrlSegment("uiCulture", uiCulture);
             request.AddUrlSegment("classId", classId.ToString());

@@ -21,7 +21,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "POST", UriTemplate = "batch/?providerName={providerName}&language={deletedLanguage}")]
         public bool BatchDeletePageTemplates(Guid[] Ids, string providerName, string deletedLanguage)
         {
-            var request = new RestRequest(this.ServiceUrl + "batch/?providerName={providerName}&language={deletedLanguage}", Method.POST);
+            var request = new RestRequest(this.GetServiceUrl("batch/?providerName={providerName}&language={deletedLanguage}"), Method.POST);
 
             request.AddUrlSegment("providerName", providerName);
             request.AddUrlSegment("deletedLanguage", deletedLanguage);
@@ -34,7 +34,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "PUT", UriTemplate = "batchPublishDraft/")]
         public void BatchPublishDraft(Guid[] templateIDs)
         {
-            var request = new RestRequest(this.ServiceUrl + "batchPublishDraft/", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("batchPublishDraft/"), Method.PUT);
 
             request.AddParameter("application/json", SerializeObject(templateIDs), ParameterType.RequestBody);
 
@@ -44,7 +44,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "PUT", UriTemplate = "changeTemplate/{templateId}/?newTemplateId={newTemplateId}")]
         public bool ChangeTemplate(Guid templateId, Guid newTemplateId)
         {
-            var request = new RestRequest(this.ServiceUrl + "changeTemplate/{templateId}/?newTemplateId={newTemplateId}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("changeTemplate/{templateId}/?newTemplateId={newTemplateId}"), Method.PUT);
 
             request.AddUrlSegment("templateId", templateId.ToString());
             request.AddUrlSegment("newTemplateId", newTemplateId.ToString());
@@ -55,7 +55,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "DELETE", UriTemplate = "{templateId}/?providerName={providerName}&language={deletedLanguage}")]
         public bool DeletePageTemplate(Guid templateId, string providerName, string deletedLanguage)
         {
-            var request = new RestRequest(this.ServiceUrl + "{templateId}/?providerName={providerName}&language={deletedLanguage}", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("{templateId}/?providerName={providerName}&language={deletedLanguage}"), Method.DELETE);
 
             request.AddUrlSegment("templateId", templateId.ToString());
             request.AddUrlSegment("providerName", providerName);
@@ -67,7 +67,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebGet(UriTemplate = "?pageFilter={pageFilter}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&root={root}")]
         public CollectionContext<PageTemplateViewModel> GetPageTemlatesInCondition(string pageFilter, string sortExpression, int skip, int take, string filter, string root)
         {
-            var request = new RestRequest(this.ServiceUrl + "?pageFilter={pageFilter}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&root={root}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("?pageFilter={pageFilter}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&root={root}"), Method.GET);
 
             request.AddUrlSegment("pageFilter", pageFilter);
             request.AddUrlSegment("sortExpression", sortExpression);
@@ -82,7 +82,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebGet(UriTemplate = "{templateId}/?providerName={providerName}")]
         public WcfPageTemplateContext GetPageTemplate(Guid templateId, string providerName)
         {
-            var request = new RestRequest(this.ServiceUrl + "{templateId}/?providerName={providerName}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("{templateId}/?providerName={providerName}"), Method.GET);
 
             request.AddUrlSegment("templateId", templateId.ToString());
             request.AddUrlSegment("providerName", providerName);
@@ -93,7 +93,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebGet(UriTemplate = "/sitelinks/{templateId}/?sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}")]
         public CollectionContext<SiteItemLinkViewModel> GetSharedSites(Guid templateId, string sortExpression, int skip, int take, string filter)
         {
-            var request = new RestRequest(this.ServiceUrl + "/sitelinks/{templateId}/?sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/sitelinks/{templateId}/?sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}"), Method.GET);
 
             request.AddUrlSegment("templateId", templateId.ToString());
             request.AddUrlSegment("sortExpression", sortExpression);
@@ -107,7 +107,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "PUT", UriTemplate = "{templateId}/?itemType={itemType}&providerName={providerName}&managerType={managerType}&duplicate={duplicate}")]
         public WcfPageTemplateContext SavePageTemplate(WcfPageTemplateContext templateContext, Guid templateId, string itemType, string providerName, string managerType, bool duplicate)
         {
-            var request = new RestRequest(this.ServiceUrl + "{templateId}/?itemType={itemType}&providerName={providerName}&managerType={managerType}&duplicate={duplicate}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("{templateId}/?itemType={itemType}&providerName={providerName}&managerType={managerType}&duplicate={duplicate}"), Method.PUT);
 
             request.AddUrlSegment("templateId", templateId.ToString());
             request.AddUrlSegment("itemType", itemType);
@@ -123,7 +123,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Pages
         //[WebInvoke(Method = "PUT", UriTemplate = "/savesitelinks/{templateId}/")]
         public bool SaveSharedSites(Guid templateId, Guid[] sharedSiteIDs)
         {
-            var request = new RestRequest(this.ServiceUrl + "/savesitelinks/{templateId}/", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("/savesitelinks/{templateId}/"), Method.PUT);
 
             request.AddUrlSegment("templateId", templateId.ToString());
 

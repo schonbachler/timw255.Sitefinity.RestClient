@@ -19,7 +19,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce
         //[WebInvoke(Method="GET", UriTemplate="/ExchangeRates/CalcPrices/?currentPrice={currentPrice}", ResponseFormat=WebMessageFormat.Json)]
         public List<PriceKeyValue> CalculateCurrencyPrices(decimal currentPrice)
         {
-            var request = new RestRequest(this.ServiceUrl + "/ExchangeRates/CalcPrices/?currentPrice={currentPrice}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/ExchangeRates/CalcPrices/?currentPrice={currentPrice}"), Method.GET);
 
             request.AddUrlSegment("currentPrice", currentPrice.ToString());
 
@@ -29,7 +29,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce
         //[WebInvoke(Method="GET", UriTemplate="/AllowedCurrencies/?siteId={siteId}", ResponseFormat=WebMessageFormat.Json)]
         public CurrenciesAllowedSettingsViewModel GetAllowedCurrenices(Guid siteId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/AllowedCurrencies/?siteId={siteId}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/AllowedCurrencies/?siteId={siteId}"), Method.GET);
 
             request.AddUrlSegment("siteId", siteId.ToString());
 
@@ -39,7 +39,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce
         //[WebInvoke(Method="GET", UriTemplate="/Currencies/?filter={filter}", ResponseFormat=WebMessageFormat.Json)]
         public CollectionContext<CurrencyViewModel> GetCurrencyInfo(string filter)
         {
-            var request = new RestRequest(this.ServiceUrl + "/Currencies/?filter={filter}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/Currencies/?filter={filter}"), Method.GET);
 
             request.AddUrlSegment("filter", filter);
 
@@ -49,7 +49,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce
         //[WebInvoke(Method="GET", UriTemplate="/ExchangeRates/?serviceId={serviceId}&requestedCurrencies={requestedCurrencies}&defaultCurrency={defaultCurrency}&siteId={siteId}", ResponseFormat=WebMessageFormat.Json)]
         public ExchangeRateResponseViewModel GetExchangeRates(Guid serviceId, string requestedCurrencies, string defaultCurrency, Guid siteId)
         {
-            var request = new RestRequest(this.ServiceUrl + "/ExchangeRates/?serviceId={serviceId}&requestedCurrencies={requestedCurrencies}&defaultCurrency={defaultCurrency}&siteId={siteId}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/ExchangeRates/?serviceId={serviceId}&requestedCurrencies={requestedCurrencies}&defaultCurrency={defaultCurrency}&siteId={siteId}"), Method.GET);
 
             request.AddUrlSegment("serviceId", serviceId.ToString());
             request.AddUrlSegment("requestedCurrencies", requestedCurrencies);
@@ -62,7 +62,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce
         //[WebInvoke(Method="PUT", UriTemplate="allowedcurrencies/{key}/?siteId={siteId}", ResponseFormat=WebMessageFormat.Json)]
         public void SaveCurrenciesBasicSettings(ItemContext<CurrenciesAllowedSettingsViewModel> allowedCurrenciesSettings, string key, Guid siteId)
         {
-            var request = new RestRequest(this.ServiceUrl + "allowedcurrencies/{key}/?siteId={siteId}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("allowedcurrencies/{key}/?siteId={siteId}"), Method.PUT);
 
             request.AddUrlSegment("key", key);
             request.AddUrlSegment("siteId", siteId.ToString());

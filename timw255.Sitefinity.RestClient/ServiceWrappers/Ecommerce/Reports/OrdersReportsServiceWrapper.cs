@@ -19,7 +19,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Ecommerce.Reports
         //[WebGet(UriTemplate = "summaryreport/?provider={provider}&fromDate={fromDate}&toDate={toDate}")]
         public ItemContext<OrderSummaryReportViewModel> GetSummaryReport(string provider, DateTime fromDate, DateTime toDate)
         {
-            var request = new RestRequest(this.ServiceUrl + "summaryreport/?provider={provider}&fromDate={fromDate}&toDate={toDate}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("summaryreport/?provider={provider}&fromDate={fromDate}&toDate={toDate}"), Method.GET);
 
             request.AddUrlSegment("provider", provider);
             request.AddUrlSegment("fromDate", fromDate.ToString());

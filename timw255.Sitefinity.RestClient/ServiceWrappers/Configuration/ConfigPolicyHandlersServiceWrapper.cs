@@ -20,7 +20,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Configuration
         //[WebGet(UriTemplate="/?sort={sort}&skip={skip}&take={take}&filter={filter}&provider={provider}", ResponseFormat=WebMessageFormat.Json)]
         public CollectionContext<UIConfigPolicyHandler> GetConfigHandlers(string sort, int skip, int take, string filter, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "/?sort={sort}&skip={skip}&take={take}&filter={filter}&provider={provider}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/?sort={sort}&skip={skip}&take={take}&filter={filter}&provider={provider}"), Method.GET);
 
             request.AddUrlSegment("sort", sort);
             request.AddUrlSegment("skip", skip.ToString());

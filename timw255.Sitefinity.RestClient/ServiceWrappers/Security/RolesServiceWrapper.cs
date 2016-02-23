@@ -21,7 +21,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Security
         //[WebInvoke(Method = "DELETE", UriTemplate = "{roleId}/?provider={provider}")]
         public bool DeleteRole(Guid roleId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "{roleId}/?provider={provider}", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("{roleId}/?provider={provider}"), Method.DELETE);
 
             request.AddUrlSegment("roleId", roleId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -32,7 +32,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Security
         //[WebInvoke(Method = "DELETE", UriTemplate = "{roleId}/{userId}/?provider={provider}")]
         public bool DeleteRoleUser(Guid roleId, Guid userId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "{roleId}/{userId}/?provider={provider}", Method.DELETE);
+            var request = new RestRequest(this.GetServiceUrl("{roleId}/{userId}/?provider={provider}"), Method.DELETE);
 
             request.AddUrlSegment("roleId", roleId.ToString());
             request.AddUrlSegment("userId", userId.ToString());
@@ -44,7 +44,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Security
         //[WebGet(UriTemplate = "CountRoleUsers/{roleId}/{provider}")]
         public int GetCountOfUsersInRole(Guid roleId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "CountRoleUsers/{roleId}/{provider}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("CountRoleUsers/{roleId}/{provider}"), Method.GET);
 
             request.AddUrlSegment("roleId", roleId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -55,7 +55,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Security
         //[WebInvoke(Method = "PUT", RequestFormat = WebMessageFormat.Json, UriTemplate = "countWithLocalChanges/?roleProvider={roleProvider}&roleId={roleId}&filter={filter}&userProvider={userProvider}&forAllProviders={forAllUserProviders}")]
         public int GetNumOfUsersInRoleWithLocalChanges(UserProviderPair[] localChange, Guid roleId, string roleProvider, string filter, string userProvider, bool forAllUserProviders)
         {
-            var request = new RestRequest(this.ServiceUrl + "countWithLocalChanges/?roleProvider={roleProvider}&roleId={roleId}&filter={filter}&userProvider={userProvider}&forAllProviders={forAllUserProviders}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("countWithLocalChanges/?roleProvider={roleProvider}&roleId={roleId}&filter={filter}&userProvider={userProvider}&forAllProviders={forAllUserProviders}"), Method.PUT);
 
             request.AddUrlSegment("roleProvider", roleProvider);
             request.AddUrlSegment("roleId", roleId.ToString());
@@ -71,7 +71,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Security
         //[WebGet(UriTemplate = "{roleId}/?provider={provider}")]
         public WcfRole GetRole(Guid roleId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "{roleId}/?provider={provider}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("{roleId}/?provider={provider}"), Method.GET);
 
             request.AddUrlSegment("roleId", roleId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -82,7 +82,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Security
         //[WebGet(UriTemplate = "/GetRoleProviders/?abilities={commaSeperatedAbilities}")]
         public CollectionContext<RoleProviderItem> GetRoleProviders(string commaSeperatedAbilities)
         {
-            var request = new RestRequest(this.ServiceUrl + "/GetRoleProviders/?abilities={commaSeperatedAbilities}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/GetRoleProviders/?abilities={commaSeperatedAbilities}"), Method.GET);
 
             request.AddUrlSegment("commaSeperatedAbilities", commaSeperatedAbilities);
 
@@ -92,7 +92,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Security
         //[WebGet(UriTemplate = "/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}")]
         public CollectionContext<WcfRole> GetRoles(string provider, string sortExpression, int skip, int take, string filter)
         {
-            var request = new RestRequest(this.ServiceUrl + "/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}"), Method.GET);
 
             request.AddUrlSegment("provider", provider);
             request.AddUrlSegment("sortExpression", sortExpression);
@@ -106,7 +106,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Security
         //[WebGet(UriTemplate = "membershipProviderCount/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&membershipProvider={membershipProvider}")]
         public CollectionContext<WcfRole> GetRolesWithUserCountPerMembershipProvider(string provider, string sortExpression, int skip, int take, string filter, string membershipProvider)
         {
-            var request = new RestRequest(this.ServiceUrl + "membershipProviderCount/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&membershipProvider={membershipProvider}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("membershipProviderCount/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&membershipProvider={membershipProvider}"), Method.GET);
 
             request.AddUrlSegment("provider", provider);
             request.AddUrlSegment("sortExpression", sortExpression);
@@ -121,7 +121,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Security
         //[WebGet(UriTemplate = "GetRoleUsers/{roleId}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}")]
         public CollectionContext<UserProviderPair> GetRoleUsers(Guid roleId, string provider, string sortExpression, int skip, int take, string filter)
         {
-            var request = new RestRequest(this.ServiceUrl + "GetRoleUsers/{roleId}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}", Method.GET);
+            var request = new RestRequest(this.GetServiceUrl("GetRoleUsers/{roleId}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}"), Method.GET);
 
             request.AddUrlSegment("roleId", roleId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -136,7 +136,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Security
         //[WebInvoke(Method = "PUT", UriTemplate = "GetWcfUsersInRole/{roleId}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&userProvider={userProvider}&forAllUserProviders={forAllUserProviders}", RequestFormat = WebMessageFormat.Json)]
         public CollectionContext<WcfMembershipUser> GetWcfUsersInRole(UserProviderPair[] localChange, Guid roleId, string provider, string sortExpression, int skip, int take, string filter, string userProvider, bool forAllUserProviders)
         {
-            var request = new RestRequest(this.ServiceUrl + "GetWcfUsersInRole/{roleId}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&userProvider={userProvider}&forAllUserProviders={forAllUserProviders}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("GetWcfUsersInRole/{roleId}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}&userProvider={userProvider}&forAllUserProviders={forAllUserProviders}"), Method.PUT);
 
             request.AddUrlSegment("roleId", roleId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -155,7 +155,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Security
         //[WebInvoke(Method = "PUT", UriTemplate = "pick/{roleIdString}/?provider={provider}")]
         public CollectionContext<Guid> PickUsersInRole(Guid roleId, string provider, Guid[] userIdsToPickFrom)
         {
-            var request = new RestRequest(this.ServiceUrl + "pick/{roleId}/?provider={provider}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("pick/{roleId}/?provider={provider}"), Method.PUT);
 
             request.AddUrlSegment("roleId", roleId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -168,7 +168,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Security
         //[WebInvoke(Method = "PUT", UriTemplate = "{roleId}/?provider={provider}")]
         public WcfRole SaveRole(WcfRole role, Guid roleId, string provider)
         {
-            var request = new RestRequest(this.ServiceUrl + "{roleId}/?provider={provider}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("{roleId}/?provider={provider}"), Method.PUT);
 
             request.AddUrlSegment("roleId", roleId.ToString());
             request.AddUrlSegment("provider", provider);
@@ -181,7 +181,7 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers.Security
         //[WebInvoke(Method = "PUT", UriTemplate = "SaveRoleUser/{roleId}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}")]
         public string SaveRoleUser(UserProviderPair[] users, Guid roleId, string provider, string sortExpression, string skip, string take, string filter)
         {
-            var request = new RestRequest(this.ServiceUrl + "SaveRoleUser/{roleId}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}", Method.PUT);
+            var request = new RestRequest(this.GetServiceUrl("SaveRoleUser/{roleId}/?provider={provider}&sortExpression={sortExpression}&skip={skip}&take={take}&filter={filter}"), Method.PUT);
 
             request.AddUrlSegment("roleId", roleId.ToString());
             request.AddUrlSegment("provider", provider);

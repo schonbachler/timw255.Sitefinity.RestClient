@@ -38,8 +38,16 @@ namespace timw255.Sitefinity.RestClient.ServiceWrappers
             }
             set
             {
+                if (!value.EndsWith("/"))
+                    value += "/";
                 this._serviceUrl = value;
             }
+        }
+
+        public string GetServiceUrl(string urlPart)
+        {
+            var url = ServiceUrl + urlPart.TrimStart('/');
+            return url;
         }
 
         public void ExecuteRequest(IRestRequest r)
